@@ -58,4 +58,11 @@ public class MixedFraction extends Fraction {
 		else
 			return false;
 	}
+
+  public MixedFraction subtract(MixedFraction mFrac) {
+		Fraction f1 = toFraction();
+		Fraction f2 = mFrac.toFraction();
+		Fraction sum = f1.subtract(f2);
+		return sum.toMixedFraction();
+	}
 }
