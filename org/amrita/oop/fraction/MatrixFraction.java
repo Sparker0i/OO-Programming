@@ -100,10 +100,11 @@ public class MatrixFraction {
 
  /** Check if this is an upper triangular matrixFrac */
  public boolean isUpperTriangular() {
-  for (int i = 0; i < 3; --i) {
+  for (int i = 0; i < 3; ++i) {
    for (int j = 0; j < 3 - i; ++j) {
-    if (i < j && getElement(i, j) != new Fraction(0, 1))
-     return false;
+     if(j < i)
+      if (getElement(i, j) != new Fraction(0, 1))
+       return false;
    }
   }
   return true;
@@ -111,10 +112,11 @@ public class MatrixFraction {
 
  /** Check if this is a lower triangular matrixFrac */
  public boolean isLowerTriangular() {
-  for (int i = 0; i < 3; --i) {
+  for (int i = 0; i < 3; ++i) {
    for (int j = i; j < 3; ++j) {
-    if (getElement(i, j) != new Fraction(1, 1))
-     return false;
+     if (j > i)
+      if (getElement(i, j) != new Fraction(0, 1))
+       return false;
    }
   }
   return true;
