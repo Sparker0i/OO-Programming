@@ -145,7 +145,7 @@ public class MatrixFraction {
  }
 
  /** To compute the difference between two matrices */
- public MatrixFraction Subtract(MatrixFraction mFrac) {
+ public MatrixFraction subtract(MatrixFraction mFrac) {
   MatrixFraction z = new MatrixFraction();
   for (int i = 0; i < 3; ++i) {
    for (int j = 0; j < 3; ++j) {
@@ -228,27 +228,26 @@ public class MatrixFraction {
   MatrixFraction z = this;
   for (int i = 0; i < 3; ++i) {
    for (int j = 0; j < 3; ++j) {
-    Fraction x = this.getElement(i, j);
+    Fraction x = getElement(i, j);
     int n = x.getNumerator();
     n *= scalar;
     x.setNumerator(n);
-    z.setElement(x, i, j);
+    setElement(x, i, j);
    }
   }
   return z;
  }
 
  public MatrixFraction minor() {
-	MatrixFraction mFrac = this , m = this;
   Fraction f00 =  getElement(1,1).multiply(getElement(2, 2)).subtract(getElement(2,1).multiply(getElement(1,2)));
-  Fraction f01 =  getElement(1,0).multiply(mFrac.getElement(2, 2)).subtract(getElement(2,0).multiply(getElement(1,2)));
-  Fraction f02 = getElement(1,0).multiply(mFrac.getElement(2, 1)).subtract(getElement(2,0).multiply(getElement(1,1)));
-  Fraction f10 =  getElement(0,1).multiply(mFrac.getElement(2, 2)).subtract(getElement(2,1).multiply(getElement(0,2)));
-  Fraction f11 =  getElement(0,0).multiply(mFrac.getElement(2, 2)).subtract(getElement(2,0).multiply(getElement(0,2)));
-  Fraction f12 =  getElement(0,0).multiply(mFrac.getElement(2, 1)).subtract(getElement(2,0).multiply(getElement(0,1)));
-  Fraction f20 =  getElement(0,1).multiply(mFrac.getElement(1, 2)).subtract(getElement(1,1).multiply(getElement(0,2)));
-  Fraction f21 =  getElement(0,0).multiply(mFrac.getElement(1, 2)).subtract(getElement(1,0).multiply(getElement(0,2)));
-  Fraction f22 =  getElement(0,0).multiply(mFrac.getElement(1, 1)).subtract(getElement(1,0).multiply(getElement(0,1)));
+  Fraction f01 =  getElement(1,0).multiply(getElement(2, 2)).subtract(getElement(2,0).multiply(getElement(1,2)));
+  Fraction f02 =  getElement(1,0).multiply(getElement(2, 1)).subtract(getElement(2,0).multiply(getElement(1,1)));
+  Fraction f10 =  getElement(0,1).multiply(getElement(2, 2)).subtract(getElement(2,1).multiply(getElement(0,2)));
+  Fraction f11 =  getElement(0,0).multiply(getElement(2, 2)).subtract(getElement(2,0).multiply(getElement(0,2)));
+  Fraction f12 =  getElement(0,0).multiply(getElement(2, 1)).subtract(getElement(2,0).multiply(getElement(0,1)));
+  Fraction f20 =  getElement(0,1).multiply(getElement(1, 2)).subtract(getElement(1,1).multiply(getElement(0,2)));
+  Fraction f21 =  getElement(0,0).multiply(getElement(1, 2)).subtract(getElement(1,0).multiply(getElement(0,2)));
+  Fraction f22 =  getElement(0,0).multiply(getElement(1, 1)).subtract(getElement(1,0).multiply(getElement(0,1)));
   MatrixFraction z = new MatrixFraction(f00 , f01 , f02 , f10 , f11 , f12 , f20 , f21 , f22);
   return z;
  }
