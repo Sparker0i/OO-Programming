@@ -244,25 +244,25 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 			}
 		}
 		if (s.equals("AC")) {
-			tfield.setText("");			//Clears Input Field
+			tfield.setText("");										//Clears Input Field
 			x = 0;
 			y = 0;
 			z = 0;
 		}
 		if (s.equals("log")) {
 			if (tfield.getText().equals("")) {
-				tfield.setText("");				//If Input text is null, let it do nothing
+				tfield.setText("");									//If Input text is null, let it do nothing
 			} else {
-				a = Math.log(Double.parseDouble(tfield.getText()));				
+				a = Math.log(Double.parseDouble(tfield.getText()));	//Parses the String, gets its Log					
 				tfield.setText("");
-				tfield.setText(tfield.getText() + a);
+				tfield.setText(tfield.getText() + a);				//Sets it back to the text input
 			}
 		}
 		if (s.equals("1/x")) {
-			if (tfield.getText().equals("")) {
+			if (tfield.getText().equals("")) {						//If input text is null, this snippet doesn't care less.
 				tfield.setText("");
 			} else {
-				a = 1 / Double.parseDouble(tfield.getText());
+				a = 1 / Double.parseDouble(tfield.getText());		//Inverts the number after parsing it
 				tfield.setText("");
 				tfield.setText(tfield.getText() + a);
 			}
@@ -271,16 +271,16 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 			if (tfield.getText().equals("")) {
 				tfield.setText("");
 			} else {
-				a = Math.exp(Double.parseDouble(tfield.getText()));
+				a = Math.exp(Double.parseDouble(tfield.getText()));	//Calculates e ^ a
 				tfield.setText("");
-				tfield.setText(tfield.getText() + a);
+				tfield.setText(tfield.getText() + a);				//Sets it back to the text field.
 			}
 		}
 		if (s.equals("x^2")) {
 			if (tfield.getText().equals("")) {
 				tfield.setText("");
 			} else {
-				a = Math.pow(Double.parseDouble(tfield.getText()), 2);
+				a = Math.pow(Double.parseDouble(tfield.getText()), 2);	//Parses the number, squares it
 				tfield.setText("");
 				tfield.setText(tfield.getText() + a);
 			}
@@ -289,21 +289,18 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 			if (tfield.getText().equals("")) {
 				tfield.setText("");
 			} else {
-				a = Math.pow(Double.parseDouble(tfield.getText()), 3);
+				a = Math.pow(Double.parseDouble(tfield.getText()), 3);	//Parses the number, cubes it
 				tfield.setText("");
 				tfield.setText(tfield.getText() + a);
 			}
 		}
-		if (s.equals("+/-")) {
-			if (x == 0) {
-				tfield.setText("-" + tfield.getText());
-				x = 1;
-			} else {
-				tfield.setText(tfield.getText());
-			}
+		if (s.equals("+/-")) {										//I've modified this one for my purposes, look at this only if you could care less.
+				a = Double.parseDouble(tfield.getText());
+				a *= -1;
+				tfield.setText("" + a);
 		}
 		if (s.equals(".")) {
-			if (y == 0) {
+			if (y == 0) {											//I don't get this completely, but I think it means if it hasn't already been done
 				tfield.setText(tfield.getText() + ".");
 				y = 1;
 			} else {
@@ -311,7 +308,7 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 			}
 		}
 		if (s.equals("+")) {
-			if (tfield.getText().equals("")) {
+			if (tfield.getText().equals("")) {						//If null, sets the addend to be 0
 				tfield.setText("");
 				temp = 0;
 				ch = '+';
@@ -322,7 +319,7 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 				y = 0;
 				x = 0;
 			}
-			tfield.requestFocus();
+			//tfield.requestFocus();
 		}
 		if (s.equals("-")) {
 			if (tfield.getText().equals("")) {
@@ -481,7 +478,7 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 		} catch (Exception e) {
 		}
 		ScientificCalculator f = new ScientificCalculator();
-		f.setTitle("ScientificCalculator");
+		f.setTitle("Scientific Calculator");
 		f.pack();
 		f.setVisible(true);
 	}
