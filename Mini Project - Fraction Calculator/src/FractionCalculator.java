@@ -1,9 +1,12 @@
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.text.JTextComponent;
+import javax.swing.text.TextAction;
+
 import java.awt.event.*;
 
 @SuppressWarnings("serial")
-public class FractionCalculator extends JFrame implements ActionListener {
+public class FractionCalculator extends JFrame {
 	JTextField numInput, denInput;
 	double temp, temp1, result, a;
 	static double m1, m2;
@@ -43,437 +46,1064 @@ public class FractionCalculator extends JFrame implements ActionListener {
 				}
 			}
 		});
+		TextAction action = new TextAction("")
+		{
+		    @Override
+		    public void actionPerformed(ActionEvent e)
+		    {
+		            JTextComponent textField = getFocusedComponent();
+		            String s = e.getActionCommand();							//The Value of s will be the text written on the button; eg. if "MR" button was clicked, the function will get the event of the variable mr, which has the text "MR"
+		    		//For Buttons 1 to 9 then 0
+		    			if (s.equals("1")) {
+		    				if (z == 0) {
+		    					textField.setText(textField.getText() + "1");
+		    				} else {
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + "1");
+		    					z = 0;
+		    				}
+		    			}
+		    			if (s.equals("2")) {
+		    				if (z == 0) {
+		    					textField.setText(textField.getText() + "2");
+		    				} else {
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + "2");
+		    					z = 0;
+		    				}
+		    			}
+		    			if (s.equals("3")) {
+		    				if (z == 0) {
+		    					textField.setText(textField.getText() + "3");
+		    				} else {
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + "3");
+		    					z = 0;
+		    				}
+		    			}
+		    			if (s.equals("4")) {
+		    				if (z == 0) {
+		    					textField.setText(textField.getText() + "4");
+		    				} else {
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + "4");
+		    					z = 0;
+		    				}
+		    			}
+		    			if (s.equals("5")) {
+		    				if (z == 0) {
+		    					textField.setText(textField.getText() + "5");
+		    				} else {
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + "5");
+		    					z = 0;
+		    				}
+		    			}
+		    			if (s.equals("6")) {
+		    				if (z == 0) {
+		    					textField.setText(textField.getText() + "6");
+		    				} else {
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + "6");
+		    					z = 0;
+		    				}
+		    			}
+		    			if (s.equals("7")) {
+		    				if (z == 0) {
+		    					textField.setText(textField.getText() + "7");
+		    				} else {
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + "7");
+		    					z = 0;
+		    				}
+		    			}
+		    			if (s.equals("8")) {
+		    				if (z == 0) {
+		    					textField.setText(textField.getText() + "8");
+		    				} else {
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + "8");
+		    					z = 0;
+		    				}
+		    			}
+		    			if (s.equals("9")) {
+		    				if (z == 0) {
+		    					textField.setText(textField.getText() + "9");
+		    				} else {
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + "9");
+		    					z = 0;
+		    				}
+		    			}
+		    			if (s.equals("0")) {
+		    				if (z == 0) {
+		    					textField.setText(textField.getText() + "0");
+		    				} else {
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + "0");
+		    					z = 0;
+		    				}
+		    			}
+		    			if (s.equals("AC")) {
+		    				numInput.setText("");										//Clears Input Field
+		    				denInput.setText("");
+		    				x = 0;
+		    				y = 0;
+		    				z = 0;
+		    			}
+		    			if (s.equals("log")) {
+		    				if (textField.getText().equals("")) {
+		    					textField.setText("");									//If Input text is null, let it do nothing
+		    				} else {
+		    					a = Math.log(Double.parseDouble(textField.getText()));	//Parses the String, gets its Log					
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + a);				//Sets it back to the text input
+		    				}
+		    			}
+		    			if (s.equals("1/x")) {
+		    				if (textField.getText().equals("")) {						//If input text is null, this snippet doesn't care less.
+		    					textField.setText("");
+		    				} else {
+		    					a = 1 / Double.parseDouble(textField.getText());		//Inverts the number after parsing it
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + a);
+		    				}
+		    			}
+		    			if (s.equals("Exp")) {
+		    				if (textField.getText().equals("")) {
+		    					textField.setText("");
+		    				} else {
+		    					a = Math.exp(Double.parseDouble(textField.getText()));	//Calculates e ^ a
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + a);				//Sets it back to the text field.
+		    				}
+		    			}
+		    			if (s.equals("x^2")) {
+		    				if (textField.getText().equals("")) {
+		    					textField.setText("");
+		    				} else {
+		    					a = Math.pow(Double.parseDouble(textField.getText()), 2);	//Parses the number, squares it
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + a);
+		    				}
+		    			}
+		    			if (s.equals("x^3")) {
+		    				if (textField.getText().equals("")) {
+		    					textField.setText("");
+		    				} else {
+		    					a = Math.pow(Double.parseDouble(textField.getText()), 3);	//Parses the number, cubes it
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + a);
+		    				}
+		    			}
+		    			if (s.equals("+/-")) {										//I've modified this one for my purposes, look at this only if you could care less.
+		    					a = Double.parseDouble(textField.getText());
+		    					a *= -1;
+		    					textField.setText("" + a);
+		    			}
+		    			if (s.equals(".")) {
+		    				if (y == 0) {											//I don't get this completely, but I think it means if it hasn't already been done
+		    					textField.setText(textField.getText() + ".");
+		    					y = 1;
+		    				} else {
+		    					textField.setText(textField.getText());
+		    				}
+		    			}
+		    			if (s.equals("+")) {
+		    				if (textField.getText().equals("")) {						//If null, sets the addend to be 0, and the operator as +
+		    					textField.setText("");
+		    					temp = 0;
+		    					ch = '+';
+		    				} else {
+		    					temp = Double.parseDouble(textField.getText());		//Parses the number input
+		    					textField.setText("");									//Sets input box empty so as to enter the next number
+		    					ch = '+';											//Sets the operator to +
+		    					y = 0;												//Don't know the function of these
+		    					x = 0;
+		    				}
+		    				//textField.requestFocus();
+		    			}
+		    			if (s.equals("-")) {
+		    				if (textField.getText().equals("")) {						//Similar to +
+		    					textField.setText("");
+		    					temp = 0;
+		    					ch = '-';
+		    				} else {
+		    					x = 0;
+		    					y = 0;
+		    					temp = Double.parseDouble(textField.getText());
+		    					textField.setText("");
+		    					ch = '-';
+		    				}
+		    				textField.requestFocus();
+		    			}
+		    			if (s.equals("/")) {										//Similar to +
+		    				if (textField.getText().equals("")) {
+		    					textField.setText("");
+		    					temp = 1;
+		    					ch = '/';
+		    				} else {
+		    					x = 0;
+		    					y = 0;
+		    					temp = Double.parseDouble(textField.getText());
+		    					ch = '/';
+		    					textField.setText("");
+		    				}
+		    				textField.requestFocus();
+		    			}
+		    			if (s.equals("*")) {										//Similar to +
+		    				if (textField.getText().equals("")) {
+		    					textField.setText("");
+		    					temp = 1;
+		    					ch = '*';
+		    				} else {
+		    					x = 0;
+		    					y = 0;
+		    					temp = Double.parseDouble(textField.getText());
+		    					ch = '*';
+		    					textField.setText("");
+		    				}
+		    				textField.requestFocus();
+		    			}
+		    			if (s.equals("MC")) {										//Clears variable stored in memory
+		    				m1 = 0;
+		    				textField.setText("");
+		    			}
+		    			if (s.equals("MR")) {
+		    				textField.setText("");
+		    				textField.setText(textField.getText() + m1);					//Retrieves variable stored in memory
+		    			}
+		    			if (s.equals("M+")) {
+		    				if (k == 1) {
+		    					m1 = Double.parseDouble(textField.getText());			//No variable exists in memory, thus adds text input value to the memory
+		    					k++;
+		    				} else {
+		    					m1 += Double.parseDouble(textField.getText());			//Variable in memory exists, thus adds this value to the one in memory
+		    					textField.setText("" + m1);							//Displays the new result in input field
+		    				}
+		    			}
+		    			if (s.equals("M-")) {
+		    				if (k == 1) {
+		    					m1 = Double.parseDouble(textField.getText());			//No variable exists in memory, thus adds this variable to the memory
+		    					k++;
+		    				} else {
+		    					m1 -= Double.parseDouble(textField.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
+		    					textField.setText("" + m1);
+		    				}
+		    			}
+		    			if (s.equals("Sqrt")) {
+		    				if (textField.getText().equals("")) {						//Doesnt care less if the text input is empty
+		    					textField.setText("");
+		    				} else {
+		    					a = Math.sqrt(Double.parseDouble(textField.getText()));	//Else calculates the square root
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + a);
+		    				}
+		    			}
+		    			if (s.equals("SIN")) {										//Calculates sin of the given angle (radians)
+		    				if (textField.getText().equals("")) {
+		    					textField.setText("");
+		    				} else {
+		    					a = Math.sin(Double.parseDouble(textField.getText()));
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + a);
+		    				}
+		    			}
+		    			if (s.equals("COS")) {										//Calculates cos of the given angle
+		    				if (textField.getText().equals("")) {
+		    					textField.setText("");
+		    				} else {
+		    					a = Math.cos(Double.parseDouble(textField.getText()));
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + a);
+		    				}
+		    			}
+		    			if (s.equals("TAN")) {										//Calculates tan of the given angle
+		    				if (textField.getText().equals("")) {
+		    					textField.setText("");
+		    				} else {
+		    					a = Math.tan(Double.parseDouble(textField.getText()));
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + a);
+		    				}
+		    			}
+		    			if (s.equals("=")) {										//Does something when = button is pressed
+		    				if (textField.getText().equals("")) {
+		    					textField.setText("");
+		    				} else {
+		    					temp1 = Double.parseDouble(textField.getText());		//Gets the second variable, currently in the text input
+		    					switch (ch) {
+		    					case '+':
+		    						result = temp + temp1;
+		    						break;
+		    					case '-':
+		    						result = temp - temp1;
+		    						break;
+		    					case '/':
+		    						result = temp / temp1;
+		    						break;
+		    					case '*':
+		    						result = temp * temp1;
+		    						break;
+		    					}
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + result);			//Modifies text input to currently stored answer
+		    					z = 1;
+		    				}
+		    			}
+		    			if (s.equals("n!")) {										//Calculates n! and puts the value in the input box
+		    				if (textField.getText().equals("")) {
+		    					textField.setText("");
+		    				} else {
+		    					a = fact(Double.parseDouble(textField.getText()));
+		    					textField.setText("");
+		    					textField.setText(textField.getText() + a);
+		    				}
+		    			}
+		    			textField.requestFocus();
+		    }
+		};
 		denPanel.add(denInput);										//To add the text field to the desired panel
 		buttonpanel = new JPanel();									//A New Panel For Buttons
 		buttonpanel.setLayout(new GridLayout(8, 4, 2, 2));			//To arrange buttons in a rectangular grid of width 4 and height 8, with a vertical gap of 2 and horizontal gap of 2
 		mr = new JButton("MR");										//Create A new Button with a label "MR"
 		buttonpanel.add(mr);										//Add it to layout
-		mr.addActionListener(this);									//addActionListener(this) automatically invokes actionPerformed(buttonText) {Its there below, don't be too lazy} . eg. this one invokes actionPerformed(mr)
+		mr.addActionListener(action);									//addActionListener(action) automatically invokes actionPerformed(buttonText) {Its there below, don't be too lazy} . eg. action one invokes actionPerformed(mr)
 		mc = new JButton("MC");										//Similar Procedure for all buttons
 		buttonpanel.add(mc);
-		mc.addActionListener(this);
+		mc.addActionListener(action);
 
 		mp = new JButton("M+");
 		buttonpanel.add(mp);
-		mp.addActionListener(this);
+		mp.addActionListener(action);
 
 		mm = new JButton("M-");
 		buttonpanel.add(mm);
-		mm.addActionListener(this);
+		mm.addActionListener(action);
 
 		b1 = new JButton("1");
 		buttonpanel.add(b1);
-		b1.addActionListener(this);
+		b1.addActionListener(action);
 		b2 = new JButton("2");
 		buttonpanel.add(b2);
-		b2.addActionListener(this);
+		b2.addActionListener(action);
 		b3 = new JButton("3");
 		buttonpanel.add(b3);
-		b3.addActionListener(this);
+		b3.addActionListener(action);
 
 		b4 = new JButton("4");
 		buttonpanel.add(b4);
-		b4.addActionListener(this);
+		b4.addActionListener(action);
 		b5 = new JButton("5");
 		buttonpanel.add(b5);
-		b5.addActionListener(this);
+		b5.addActionListener(action);
 		b6 = new JButton("6");
 		buttonpanel.add(b6);
-		b6.addActionListener(this);
+		b6.addActionListener(action);
 
 		b7 = new JButton("7");
 		buttonpanel.add(b7);
-		b7.addActionListener(this);
+		b7.addActionListener(action);
 		b8 = new JButton("8");
 		buttonpanel.add(b8);
-		b8.addActionListener(this);
+		b8.addActionListener(action);
 		b9 = new JButton("9");
 		buttonpanel.add(b9);
-		b9.addActionListener(this);
+		b9.addActionListener(action);
 
 		zero = new JButton("0");
 		buttonpanel.add(zero);
-		zero.addActionListener(this);
+		zero.addActionListener(action);
 
 		plus = new JButton("+");
 		buttonpanel.add(plus);
-		plus.addActionListener(this);
+		plus.addActionListener(action);
 
 		min = new JButton("-");
 		buttonpanel.add(min);
-		min.addActionListener(this);
+		min.addActionListener(action);
 
 		mul = new JButton("*");
 		buttonpanel.add(mul);
-		mul.addActionListener(this);
+		mul.addActionListener(action);
 
 		div = new JButton("/");
-		div.addActionListener(this);
+		div.addActionListener(action);
 		buttonpanel.add(div);
 
 		addSub = new JButton("+/-");
 		buttonpanel.add(addSub);
-		addSub.addActionListener(this);
+		addSub.addActionListener(action);
 
 		dot = new JButton(".");
 		buttonpanel.add(dot);
-		dot.addActionListener(this);
+		dot.addActionListener(action);
 
 		eq = new JButton("=");
 		buttonpanel.add(eq);
-		eq.addActionListener(this);
+		eq.addActionListener(action);
 
 		rec = new JButton("1/x");
 		buttonpanel.add(rec);
-		rec.addActionListener(this);
+		rec.addActionListener(action);
 		sqrt = new JButton("Sqrt");
 		buttonpanel.add(sqrt);
-		sqrt.addActionListener(this);
+		sqrt.addActionListener(action);
 		log = new JButton("log");
 		buttonpanel.add(log);
-		log.addActionListener(this);
+		log.addActionListener(action);
 
 		sin = new JButton("SIN");
 		buttonpanel.add(sin);
-		sin.addActionListener(this);
+		sin.addActionListener(action);
 		cos = new JButton("COS");
 		buttonpanel.add(cos);
-		cos.addActionListener(this);
+		cos.addActionListener(action);
 		tan = new JButton("TAN");
 		buttonpanel.add(tan);
-		tan.addActionListener(this);
+		tan.addActionListener(action);
 		pow2 = new JButton("x^2");
 		buttonpanel.add(pow2);
-		pow2.addActionListener(this);
+		pow2.addActionListener(action);
 		pow3 = new JButton("x^3");
 		buttonpanel.add(pow3);
-		pow3.addActionListener(this);
+		pow3.addActionListener(action);
 		exp = new JButton("Exp");
-		exp.addActionListener(this);
+		exp.addActionListener(action);
 		buttonpanel.add(exp);
 		fac = new JButton("n!");
-		fac.addActionListener(this);
+		fac.addActionListener(action);
 		buttonpanel.add(fac);
 
 		clr = new JButton("AC");
 		buttonpanel.add(clr);
-		clr.addActionListener(this);
+		clr.addActionListener(action);
 		cont.add("South", buttonpanel);								//Adds ButtonPanel to the South Region
 		cont.add("Center" , denPanel);								//Adds Denominator Input Panel to Center Region
 		cont.add("North", numPanel);								//Adds Numerator Panel to the North Region
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);				//What To Do When Close Has Been Clicked
 	}
 
-	public void actionPerformed(ActionEvent e) {
-		String s = e.getActionCommand();				//The Value of s will be the text written on the button; eg. if "MR" button was clicked, the function will get the event of the variable mr, which has the text "MR"
+	/*public void actionPerformed(ActionEvent e) {
+		String s = e.getActionCommand();							//The Value of s will be the text written on the button; eg. if "MR" button was clicked, the function will get the event of the variable mr, which has the text "MR"
 		//For Buttons 1 to 9 then 0
-		if (s.equals("1")) {
-			if (z == 0) {
-				numInput.setText(numInput.getText() + "1");
-			} else {
-				numInput.setText("");
-				numInput.setText(numInput.getText() + "1");
-				z = 0;
-			}
-		}
-		if (s.equals("2")) {
-			if (z == 0) {
-				numInput.setText(numInput.getText() + "2");
-			} else {
-				numInput.setText("");
-				numInput.setText(numInput.getText() + "2");
-				z = 0;
-			}
-		}
-		if (s.equals("3")) {
-			if (z == 0) {
-				numInput.setText(numInput.getText() + "3");
-			} else {
-				numInput.setText("");
-				numInput.setText(numInput.getText() + "3");
-				z = 0;
-			}
-		}
-		if (s.equals("4")) {
-			if (z == 0) {
-				numInput.setText(numInput.getText() + "4");
-			} else {
-				numInput.setText("");
-				numInput.setText(numInput.getText() + "4");
-				z = 0;
-			}
-		}
-		if (s.equals("5")) {
-			if (z == 0) {
-				numInput.setText(numInput.getText() + "5");
-			} else {
-				numInput.setText("");
-				numInput.setText(numInput.getText() + "5");
-				z = 0;
-			}
-		}
-		if (s.equals("6")) {
-			if (z == 0) {
-				numInput.setText(numInput.getText() + "6");
-			} else {
-				numInput.setText("");
-				numInput.setText(numInput.getText() + "6");
-				z = 0;
-			}
-		}
-		if (s.equals("7")) {
-			if (z == 0) {
-				numInput.setText(numInput.getText() + "7");
-			} else {
-				numInput.setText("");
-				numInput.setText(numInput.getText() + "7");
-				z = 0;
-			}
-		}
-		if (s.equals("8")) {
-			if (z == 0) {
-				numInput.setText(numInput.getText() + "8");
-			} else {
-				numInput.setText("");
-				numInput.setText(numInput.getText() + "8");
-				z = 0;
-			}
-		}
-		if (s.equals("9")) {
-			if (z == 0) {
-				numInput.setText(numInput.getText() + "9");
-			} else {
-				numInput.setText("");
-				numInput.setText(numInput.getText() + "9");
-				z = 0;
-			}
-		}
-		if (s.equals("0")) {
-			if (z == 0) {
-				numInput.setText(numInput.getText() + "0");
-			} else {
-				numInput.setText("");
-				numInput.setText(numInput.getText() + "0");
-				z = 0;
-			}
-		}
-		if (s.equals("AC")) {
-			numInput.setText("");										//Clears Input Field
-			x = 0;
-			y = 0;
-			z = 0;
-		}
-		if (s.equals("log")) {
-			if (numInput.getText().equals("")) {
-				numInput.setText("");									//If Input text is null, let it do nothing
-			} else {
-				a = Math.log(Double.parseDouble(numInput.getText()));	//Parses the String, gets its Log					
-				numInput.setText("");
-				numInput.setText(numInput.getText() + a);				//Sets it back to the text input
-			}
-		}
-		if (s.equals("1/x")) {
-			if (numInput.getText().equals("")) {						//If input text is null, this snippet doesn't care less.
-				numInput.setText("");
-			} else {
-				a = 1 / Double.parseDouble(numInput.getText());		//Inverts the number after parsing it
-				numInput.setText("");
-				numInput.setText(numInput.getText() + a);
-			}
-		}
-		if (s.equals("Exp")) {
-			if (numInput.getText().equals("")) {
-				numInput.setText("");
-			} else {
-				a = Math.exp(Double.parseDouble(numInput.getText()));	//Calculates e ^ a
-				numInput.setText("");
-				numInput.setText(numInput.getText() + a);				//Sets it back to the text field.
-			}
-		}
-		if (s.equals("x^2")) {
-			if (numInput.getText().equals("")) {
-				numInput.setText("");
-			} else {
-				a = Math.pow(Double.parseDouble(numInput.getText()), 2);	//Parses the number, squares it
-				numInput.setText("");
-				numInput.setText(numInput.getText() + a);
-			}
-		}
-		if (s.equals("x^3")) {
-			if (numInput.getText().equals("")) {
-				numInput.setText("");
-			} else {
-				a = Math.pow(Double.parseDouble(numInput.getText()), 3);	//Parses the number, cubes it
-				numInput.setText("");
-				numInput.setText(numInput.getText() + a);
-			}
-		}
-		if (s.equals("+/-")) {										//I've modified this one for my purposes, look at this only if you could care less.
-				a = Double.parseDouble(numInput.getText());
-				a *= -1;
-				numInput.setText("" + a);
-		}
-		if (s.equals(".")) {
-			if (y == 0) {											//I don't get this completely, but I think it means if it hasn't already been done
-				numInput.setText(numInput.getText() + ".");
-				y = 1;
-			} else {
-				numInput.setText(numInput.getText());
-			}
-		}
-		if (s.equals("+")) {
-			if (numInput.getText().equals("")) {						//If null, sets the addend to be 0, and the operator as +
-				numInput.setText("");
-				temp = 0;
-				ch = '+';
-			} else {
-				temp = Double.parseDouble(numInput.getText());		//Parses the number input
-				numInput.setText("");									//Sets input box empty so as to enter the next number
-				ch = '+';											//Sets the operator to +
-				y = 0;												//Don't know the function of these
-				x = 0;
-			}
-			//numInput.requestFocus();
-		}
-		if (s.equals("-")) {
-			if (numInput.getText().equals("")) {						//Similar to +
-				numInput.setText("");
-				temp = 0;
-				ch = '-';
-			} else {
-				x = 0;
-				y = 0;
-				temp = Double.parseDouble(numInput.getText());
-				numInput.setText("");
-				ch = '-';
-			}
-			numInput.requestFocus();
-		}
-		if (s.equals("/")) {										//Similar to +
-			if (numInput.getText().equals("")) {
-				numInput.setText("");
-				temp = 1;
-				ch = '/';
-			} else {
-				x = 0;
-				y = 0;
-				temp = Double.parseDouble(numInput.getText());
-				ch = '/';
-				numInput.setText("");
-			}
-			numInput.requestFocus();
-		}
-		if (s.equals("*")) {										//Similar to +
-			if (numInput.getText().equals("")) {
-				numInput.setText("");
-				temp = 1;
-				ch = '*';
-			} else {
-				x = 0;
-				y = 0;
-				temp = Double.parseDouble(numInput.getText());
-				ch = '*';
-				numInput.setText("");
-			}
-			numInput.requestFocus();
-		}
-		if (s.equals("MC")) {										//Clears variable stored in memory
-			m1 = 0;
-			numInput.setText("");
-		}
-		if (s.equals("MR")) {
-			numInput.setText("");
-			numInput.setText(numInput.getText() + m1);					//Retrieves variable stored in memory
-		}
-		if (s.equals("M+")) {
-			if (k == 1) {
-				m1 = Double.parseDouble(numInput.getText());			//No variable exists in memory, thus adds text input value to the memory
-				k++;
-			} else {
-				m1 += Double.parseDouble(numInput.getText());			//Variable in memory exists, thus adds this value to the one in memory
-				numInput.setText("" + m1);							//Displays the new result in input field
-			}
-		}
-		if (s.equals("M-")) {
-			if (k == 1) {
-				m1 = Double.parseDouble(numInput.getText());			//No variable exists in memory, thus adds this variable to the memory
-				k++;
-			} else {
-				m1 -= Double.parseDouble(numInput.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
-				numInput.setText("" + m1);
-			}
-		}
-		if (s.equals("Sqrt")) {
-			if (numInput.getText().equals("")) {						//Doesnt care less if the text input is empty
-				numInput.setText("");
-			} else {
-				a = Math.sqrt(Double.parseDouble(numInput.getText()));	//Else calculates the square root
-				numInput.setText("");
-				numInput.setText(numInput.getText() + a);
-			}
-		}
-		if (s.equals("SIN")) {										//Calculates sin of the given angle (radians)
-			if (numInput.getText().equals("")) {
-				numInput.setText("");
-			} else {
-				a = Math.sin(Double.parseDouble(numInput.getText()));
-				numInput.setText("");
-				numInput.setText(numInput.getText() + a);
-			}
-		}
-		if (s.equals("COS")) {										//Calculates cos of the given angle
-			if (numInput.getText().equals("")) {
-				numInput.setText("");
-			} else {
-				a = Math.cos(Double.parseDouble(numInput.getText()));
-				numInput.setText("");
-				numInput.setText(numInput.getText() + a);
-			}
-		}
-		if (s.equals("TAN")) {										//Calculates tan of the given angle
-			if (numInput.getText().equals("")) {
-				numInput.setText("");
-			} else {
-				a = Math.tan(Double.parseDouble(numInput.getText()));
-				numInput.setText("");
-				numInput.setText(numInput.getText() + a);
-			}
-		}
-		if (s.equals("=")) {										//Does something when = button is pressed
-			if (numInput.getText().equals("")) {
-				numInput.setText("");
-			} else {
-				temp1 = Double.parseDouble(numInput.getText());		//Gets the second variable, currently in the text input
-				switch (ch) {
-				case '+':
-					result = temp + temp1;
-					break;
-				case '-':
-					result = temp - temp1;
-					break;
-				case '/':
-					result = temp / temp1;
-					break;
-				case '*':
-					result = temp * temp1;
-					break;
+		if (numInput.isFocusOwner()) {
+			if (s.equals("1")) {
+				if (z == 0) {
+					numInput.setText(numInput.getText() + "1");
+				} else {
+					numInput.setText("");
+					numInput.setText(numInput.getText() + "1");
+					z = 0;
 				}
-				numInput.setText("");
-				numInput.setText(numInput.getText() + result);			//Modifies text input to currently stored answer
-				z = 1;
 			}
-		}
-		if (s.equals("n!")) {										//Calculates n! and puts the value in the input box
-			if (numInput.getText().equals("")) {
-				numInput.setText("");
-			} else {
-				a = fact(Double.parseDouble(numInput.getText()));
-				numInput.setText("");
-				numInput.setText(numInput.getText() + a);
+			if (s.equals("2")) {
+				if (z == 0) {
+					numInput.setText(numInput.getText() + "2");
+				} else {
+					numInput.setText("");
+					numInput.setText(numInput.getText() + "2");
+					z = 0;
+				}
 			}
+			if (s.equals("3")) {
+				if (z == 0) {
+					numInput.setText(numInput.getText() + "3");
+				} else {
+					numInput.setText("");
+					numInput.setText(numInput.getText() + "3");
+					z = 0;
+				}
+			}
+			if (s.equals("4")) {
+				if (z == 0) {
+					numInput.setText(numInput.getText() + "4");
+				} else {
+					numInput.setText("");
+					numInput.setText(numInput.getText() + "4");
+					z = 0;
+				}
+			}
+			if (s.equals("5")) {
+				if (z == 0) {
+					numInput.setText(numInput.getText() + "5");
+				} else {
+					numInput.setText("");
+					numInput.setText(numInput.getText() + "5");
+					z = 0;
+				}
+			}
+			if (s.equals("6")) {
+				if (z == 0) {
+					numInput.setText(numInput.getText() + "6");
+				} else {
+					numInput.setText("");
+					numInput.setText(numInput.getText() + "6");
+					z = 0;
+				}
+			}
+			if (s.equals("7")) {
+				if (z == 0) {
+					numInput.setText(numInput.getText() + "7");
+				} else {
+					numInput.setText("");
+					numInput.setText(numInput.getText() + "7");
+					z = 0;
+				}
+			}
+			if (s.equals("8")) {
+				if (z == 0) {
+					numInput.setText(numInput.getText() + "8");
+				} else {
+					numInput.setText("");
+					numInput.setText(numInput.getText() + "8");
+					z = 0;
+				}
+			}
+			if (s.equals("9")) {
+				if (z == 0) {
+					numInput.setText(numInput.getText() + "9");
+				} else {
+					numInput.setText("");
+					numInput.setText(numInput.getText() + "9");
+					z = 0;
+				}
+			}
+			if (s.equals("0")) {
+				if (z == 0) {
+					numInput.setText(numInput.getText() + "0");
+				} else {
+					numInput.setText("");
+					numInput.setText(numInput.getText() + "0");
+					z = 0;
+				}
+			}
+			if (s.equals("AC")) {
+				numInput.setText("");										//Clears Input Field
+				x = 0;
+				y = 0;
+				z = 0;
+			}
+			if (s.equals("log")) {
+				if (numInput.getText().equals("")) {
+					numInput.setText("");									//If Input text is null, let it do nothing
+				} else {
+					a = Math.log(Double.parseDouble(numInput.getText()));	//Parses the String, gets its Log					
+					numInput.setText("");
+					numInput.setText(numInput.getText() + a);				//Sets it back to the text input
+				}
+			}
+			if (s.equals("1/x")) {
+				if (numInput.getText().equals("")) {						//If input text is null, this snippet doesn't care less.
+					numInput.setText("");
+				} else {
+					a = 1 / Double.parseDouble(numInput.getText());		//Inverts the number after parsing it
+					numInput.setText("");
+					numInput.setText(numInput.getText() + a);
+				}
+			}
+			if (s.equals("Exp")) {
+				if (numInput.getText().equals("")) {
+					numInput.setText("");
+				} else {
+					a = Math.exp(Double.parseDouble(numInput.getText()));	//Calculates e ^ a
+					numInput.setText("");
+					numInput.setText(numInput.getText() + a);				//Sets it back to the text field.
+				}
+			}
+			if (s.equals("x^2")) {
+				if (numInput.getText().equals("")) {
+					numInput.setText("");
+				} else {
+					a = Math.pow(Double.parseDouble(numInput.getText()), 2);	//Parses the number, squares it
+					numInput.setText("");
+					numInput.setText(numInput.getText() + a);
+				}
+			}
+			if (s.equals("x^3")) {
+				if (numInput.getText().equals("")) {
+					numInput.setText("");
+				} else {
+					a = Math.pow(Double.parseDouble(numInput.getText()), 3);	//Parses the number, cubes it
+					numInput.setText("");
+					numInput.setText(numInput.getText() + a);
+				}
+			}
+			if (s.equals("+/-")) {										//I've modified this one for my purposes, look at this only if you could care less.
+					a = Double.parseDouble(numInput.getText());
+					a *= -1;
+					numInput.setText("" + a);
+			}
+			if (s.equals(".")) {
+				if (y == 0) {											//I don't get this completely, but I think it means if it hasn't already been done
+					numInput.setText(numInput.getText() + ".");
+					y = 1;
+				} else {
+					numInput.setText(numInput.getText());
+				}
+			}
+			if (s.equals("+")) {
+				if (numInput.getText().equals("")) {						//If null, sets the addend to be 0, and the operator as +
+					numInput.setText("");
+					temp = 0;
+					ch = '+';
+				} else {
+					temp = Double.parseDouble(numInput.getText());		//Parses the number input
+					numInput.setText("");									//Sets input box empty so as to enter the next number
+					ch = '+';											//Sets the operator to +
+					y = 0;												//Don't know the function of these
+					x = 0;
+				}
+				//numInput.requestFocus();
+			}
+			if (s.equals("-")) {
+				if (numInput.getText().equals("")) {						//Similar to +
+					numInput.setText("");
+					temp = 0;
+					ch = '-';
+				} else {
+					x = 0;
+					y = 0;
+					temp = Double.parseDouble(numInput.getText());
+					numInput.setText("");
+					ch = '-';
+				}
+				numInput.requestFocus();
+			}
+			if (s.equals("/")) {										//Similar to +
+				if (numInput.getText().equals("")) {
+					numInput.setText("");
+					temp = 1;
+					ch = '/';
+				} else {
+					x = 0;
+					y = 0;
+					temp = Double.parseDouble(numInput.getText());
+					ch = '/';
+					numInput.setText("");
+				}
+				numInput.requestFocus();
+			}
+			if (s.equals("*")) {										//Similar to +
+				if (numInput.getText().equals("")) {
+					numInput.setText("");
+					temp = 1;
+					ch = '*';
+				} else {
+					x = 0;
+					y = 0;
+					temp = Double.parseDouble(numInput.getText());
+					ch = '*';
+					numInput.setText("");
+				}
+				numInput.requestFocus();
+			}
+			if (s.equals("MC")) {										//Clears variable stored in memory
+				m1 = 0;
+				numInput.setText("");
+			}
+			if (s.equals("MR")) {
+				numInput.setText("");
+				numInput.setText(numInput.getText() + m1);					//Retrieves variable stored in memory
+			}
+			if (s.equals("M+")) {
+				if (k == 1) {
+					m1 = Double.parseDouble(numInput.getText());			//No variable exists in memory, thus adds text input value to the memory
+					k++;
+				} else {
+					m1 += Double.parseDouble(numInput.getText());			//Variable in memory exists, thus adds this value to the one in memory
+					numInput.setText("" + m1);							//Displays the new result in input field
+				}
+			}
+			if (s.equals("M-")) {
+				if (k == 1) {
+					m1 = Double.parseDouble(numInput.getText());			//No variable exists in memory, thus adds this variable to the memory
+					k++;
+				} else {
+					m1 -= Double.parseDouble(numInput.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
+					numInput.setText("" + m1);
+				}
+			}
+			if (s.equals("Sqrt")) {
+				if (numInput.getText().equals("")) {						//Doesnt care less if the text input is empty
+					numInput.setText("");
+				} else {
+					a = Math.sqrt(Double.parseDouble(numInput.getText()));	//Else calculates the square root
+					numInput.setText("");
+					numInput.setText(numInput.getText() + a);
+				}
+			}
+			if (s.equals("SIN")) {										//Calculates sin of the given angle (radians)
+				if (numInput.getText().equals("")) {
+					numInput.setText("");
+				} else {
+					a = Math.sin(Double.parseDouble(numInput.getText()));
+					numInput.setText("");
+					numInput.setText(numInput.getText() + a);
+				}
+			}
+			if (s.equals("COS")) {										//Calculates cos of the given angle
+				if (numInput.getText().equals("")) {
+					numInput.setText("");
+				} else {
+					a = Math.cos(Double.parseDouble(numInput.getText()));
+					numInput.setText("");
+					numInput.setText(numInput.getText() + a);
+				}
+			}
+			if (s.equals("TAN")) {										//Calculates tan of the given angle
+				if (numInput.getText().equals("")) {
+					numInput.setText("");
+				} else {
+					a = Math.tan(Double.parseDouble(numInput.getText()));
+					numInput.setText("");
+					numInput.setText(numInput.getText() + a);
+				}
+			}
+			if (s.equals("=")) {										//Does something when = button is pressed
+				if (numInput.getText().equals("")) {
+					numInput.setText("");
+				} else {
+					temp1 = Double.parseDouble(numInput.getText());		//Gets the second variable, currently in the text input
+					switch (ch) {
+					case '+':
+						result = temp + temp1;
+						break;
+					case '-':
+						result = temp - temp1;
+						break;
+					case '/':
+						result = temp / temp1;
+						break;
+					case '*':
+						result = temp * temp1;
+						break;
+					}
+					numInput.setText("");
+					numInput.setText(numInput.getText() + result);			//Modifies text input to currently stored answer
+					z = 1;
+				}
+			}
+			if (s.equals("n!")) {										//Calculates n! and puts the value in the input box
+				if (numInput.getText().equals("")) {
+					numInput.setText("");
+				} else {
+					a = fact(Double.parseDouble(numInput.getText()));
+					numInput.setText("");
+					numInput.setText(numInput.getText() + a);
+				}
+			}
+			numInput.requestFocus();
 		}
-		numInput.requestFocus();
-	}
+		if (denPanel.isFocusOwner()) {
+			if (s.equals("1")) {
+				if (z == 0) {
+					denInput.setText(denInput.getText() + "1");
+				} else {
+					denInput.setText("");
+					denInput.setText(denInput.getText() + "1");
+					z = 0;
+				}
+			}
+			if (s.equals("2")) {
+				if (z == 0) {
+					denInput.setText(denInput.getText() + "2");
+				} else {
+					denInput.setText("");
+					denInput.setText(denInput.getText() + "2");
+					z = 0;
+				}
+			}
+			if (s.equals("3")) {
+				if (z == 0) {
+					denInput.setText(denInput.getText() + "3");
+				} else {
+					denInput.setText("");
+					denInput.setText(denInput.getText() + "3");
+					z = 0;
+				}
+			}
+			if (s.equals("4")) {
+				if (z == 0) {
+					denInput.setText(denInput.getText() + "4");
+				} else {
+					denInput.setText("");
+					denInput.setText(denInput.getText() + "4");
+					z = 0;
+				}
+			}
+			if (s.equals("5")) {
+				if (z == 0) {
+					denInput.setText(denInput.getText() + "5");
+				} else {
+					denInput.setText("");
+					denInput.setText(denInput.getText() + "5");
+					z = 0;
+				}
+			}
+			if (s.equals("6")) {
+				if (z == 0) {
+					denInput.setText(denInput.getText() + "6");
+				} else {
+					denInput.setText("");
+					denInput.setText(denInput.getText() + "6");
+					z = 0;
+				}
+			}
+			if (s.equals("7")) {
+				if (z == 0) {
+					denInput.setText(denInput.getText() + "7");
+				} else {
+					denInput.setText("");
+					denInput.setText(denInput.getText() + "7");
+					z = 0;
+				}
+			}
+			if (s.equals("8")) {
+				if (z == 0) {
+					denInput.setText(denInput.getText() + "8");
+				} else {
+					denInput.setText("");
+					denInput.setText(denInput.getText() + "8");
+					z = 0;
+				}
+			}
+			if (s.equals("9")) {
+				if (z == 0) {
+					denInput.setText(denInput.getText() + "9");
+				} else {
+					denInput.setText("");
+					denInput.setText(denInput.getText() + "9");
+					z = 0;
+				}
+			}
+			if (s.equals("0")) {
+				if (z == 0) {
+					denInput.setText(denInput.getText() + "0");
+				} else {
+					denInput.setText("");
+					denInput.setText(denInput.getText() + "0");
+					z = 0;
+				}
+			}
+			if (s.equals("AC")) {
+				denInput.setText("");										//Clears Input Field
+				x = 0;
+				y = 0;
+				z = 0;
+			}
+			if (s.equals("log")) {
+				if (denInput.getText().equals("")) {
+					denInput.setText("");									//If Input text is null, let it do nothing
+				} else {
+					a = Math.log(Double.parseDouble(denInput.getText()));	//Parses the String, gets its Log					
+					denInput.setText("");
+					denInput.setText(denInput.getText() + a);				//Sets it back to the text input
+				}
+			}
+			if (s.equals("1/x")) {
+				if (denInput.getText().equals("")) {						//If input text is null, this snippet doesn't care less.
+					denInput.setText("");
+				} else {
+					a = 1 / Double.parseDouble(denInput.getText());		//Inverts the number after parsing it
+					denInput.setText("");
+					denInput.setText(denInput.getText() + a);
+				}
+			}
+			if (s.equals("Exp")) {
+				if (denInput.getText().equals("")) {
+					denInput.setText("");
+				} else {
+					a = Math.exp(Double.parseDouble(denInput.getText()));	//Calculates e ^ a
+					denInput.setText("");
+					denInput.setText(denInput.getText() + a);				//Sets it back to the text field.
+				}
+			}
+			if (s.equals("x^2")) {
+				if (denInput.getText().equals("")) {
+					denInput.setText("");
+				} else {
+					a = Math.pow(Double.parseDouble(denInput.getText()), 2);	//Parses the number, squares it
+					denInput.setText("");
+					denInput.setText(denInput.getText() + a);
+				}
+			}
+			if (s.equals("x^3")) {
+				if (denInput.getText().equals("")) {
+					denInput.setText("");
+				} else {
+					a = Math.pow(Double.parseDouble(denInput.getText()), 3);	//Parses the number, cubes it
+					denInput.setText("");
+					denInput.setText(denInput.getText() + a);
+				}
+			}
+			if (s.equals("+/-")) {										//I've modified this one for my purposes, look at this only if you could care less.
+					a = Double.parseDouble(denInput.getText());
+					a *= -1;
+					denInput.setText("" + a);
+			}
+			if (s.equals(".")) {
+				if (y == 0) {											//I don't get this completely, but I think it means if it hasn't already been done
+					denInput.setText(denInput.getText() + ".");
+					y = 1;
+				} else {
+					denInput.setText(denInput.getText());
+				}
+			}
+			if (s.equals("+")) {
+				if (denInput.getText().equals("")) {						//If null, sets the addend to be 0, and the operator as +
+					denInput.setText("");
+					temp = 0;
+					ch = '+';
+				} else {
+					temp = Double.parseDouble(denInput.getText());		//Parses the number input
+					denInput.setText("");									//Sets input box empty so as to enter the next number
+					ch = '+';											//Sets the operator to +
+					y = 0;												//Don't know the function of these
+					x = 0;
+				}
+				//denInput.requestFocus();
+			}
+			if (s.equals("-")) {
+				if (denInput.getText().equals("")) {						//Similar to +
+					denInput.setText("");
+					temp = 0;
+					ch = '-';
+				} else {
+					x = 0;
+					y = 0;
+					temp = Double.parseDouble(denInput.getText());
+					denInput.setText("");
+					ch = '-';
+				}
+				denInput.requestFocus();
+			}
+			if (s.equals("/")) {										//Similar to +
+				if (denInput.getText().equals("")) {
+					denInput.setText("");
+					temp = 1;
+					ch = '/';
+				} else {
+					x = 0;
+					y = 0;
+					temp = Double.parseDouble(denInput.getText());
+					ch = '/';
+					denInput.setText("");
+				}
+				denInput.requestFocus();
+			}
+			if (s.equals("*")) {										//Similar to +
+				if (denInput.getText().equals("")) {
+					denInput.setText("");
+					temp = 1;
+					ch = '*';
+				} else {
+					x = 0;
+					y = 0;
+					temp = Double.parseDouble(denInput.getText());
+					ch = '*';
+					denInput.setText("");
+				}
+				denInput.requestFocus();
+			}
+			if (s.equals("MC")) {										//Clears variable stored in memory
+				m1 = 0;
+				denInput.setText("");
+			}
+			if (s.equals("MR")) {
+				denInput.setText("");
+				denInput.setText(denInput.getText() + m1);					//Retrieves variable stored in memory
+			}
+			if (s.equals("M+")) {
+				if (k == 1) {
+					m1 = Double.parseDouble(denInput.getText());			//No variable exists in memory, thus adds text input value to the memory
+					k++;
+				} else {
+					m1 += Double.parseDouble(denInput.getText());			//Variable in memory exists, thus adds this value to the one in memory
+					denInput.setText("" + m1);							//Displays the new result in input field
+				}
+			}
+			if (s.equals("M-")) {
+				if (k == 1) {
+					m1 = Double.parseDouble(denInput.getText());			//No variable exists in memory, thus adds this variable to the memory
+					k++;
+				} else {
+					m1 -= Double.parseDouble(denInput.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
+					denInput.setText("" + m1);
+				}
+			}
+			if (s.equals("Sqrt")) {
+				if (denInput.getText().equals("")) {						//Doesnt care less if the text input is empty
+					denInput.setText("");
+				} else {
+					a = Math.sqrt(Double.parseDouble(denInput.getText()));	//Else calculates the square root
+					denInput.setText("");
+					denInput.setText(denInput.getText() + a);
+				}
+			}
+			if (s.equals("SIN")) {										//Calculates sin of the given angle (radians)
+				if (denInput.getText().equals("")) {
+					denInput.setText("");
+				} else {
+					a = Math.sin(Double.parseDouble(denInput.getText()));
+					denInput.setText("");
+					denInput.setText(denInput.getText() + a);
+				}
+			}
+			if (s.equals("COS")) {										//Calculates cos of the given angle
+				if (denInput.getText().equals("")) {
+					denInput.setText("");
+				} else {
+					a = Math.cos(Double.parseDouble(denInput.getText()));
+					denInput.setText("");
+					denInput.setText(denInput.getText() + a);
+				}
+			}
+			if (s.equals("TAN")) {										//Calculates tan of the given angle
+				if (denInput.getText().equals("")) {
+					denInput.setText("");
+				} else {
+					a = Math.tan(Double.parseDouble(denInput.getText()));
+					denInput.setText("");
+					denInput.setText(denInput.getText() + a);
+				}
+			}
+			if (s.equals("=")) {										//Does something when = button is pressed
+				if (denInput.getText().equals("")) {
+					denInput.setText("");
+				} else {
+					temp1 = Double.parseDouble(denInput.getText());		//Gets the second variable, currently in the text input
+					switch (ch) {
+					case '+':
+						result = temp + temp1;
+						break;
+					case '-':
+						result = temp - temp1;
+						break;
+					case '/':
+						result = temp / temp1;
+						break;
+					case '*':
+						result = temp * temp1;
+						break;
+					}
+					denInput.setText("");
+					denInput.setText(denInput.getText() + result);			//Modifies text input to currently stored answer
+					z = 1;
+				}
+			}
+			if (s.equals("n!")) {										//Calculates n! and puts the value in the input box
+				if (denInput.getText().equals("")) {
+					denInput.setText("");
+				} else {
+					a = fact(Double.parseDouble(denInput.getText()));
+					denInput.setText("");
+					denInput.setText(denInput.getText() + a);
+				}
+			}
+			denInput.requestFocus();
+		}
+	}*/
 
 	double fact(double x) {
 		if (x < 0) {
