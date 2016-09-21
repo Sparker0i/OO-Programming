@@ -308,21 +308,21 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 			}
 		}
 		if (s.equals("+")) {
-			if (tfield.getText().equals("")) {						//If null, sets the addend to be 0
+			if (tfield.getText().equals("")) {						//If null, sets the addend to be 0, and the operator as +
 				tfield.setText("");
 				temp = 0;
 				ch = '+';
 			} else {
-				temp = Double.parseDouble(tfield.getText());
-				tfield.setText("");
-				ch = '+';
-				y = 0;
+				temp = Double.parseDouble(tfield.getText());		//Parses the number input
+				tfield.setText("");									//Sets input box empty so as to enter the next number
+				ch = '+';											//Sets the operator to +
+				y = 0;												//Don't know the function of these
 				x = 0;
 			}
 			//tfield.requestFocus();
 		}
 		if (s.equals("-")) {
-			if (tfield.getText().equals("")) {
+			if (tfield.getText().equals("")) {						//Similar to +
 				tfield.setText("");
 				temp = 0;
 				ch = '-';
@@ -335,7 +335,7 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 			}
 			tfield.requestFocus();
 		}
-		if (s.equals("/")) {
+		if (s.equals("/")) {										//Similar to +
 			if (tfield.getText().equals("")) {
 				tfield.setText("");
 				temp = 1;
@@ -349,7 +349,7 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 			}
 			tfield.requestFocus();
 		}
-		if (s.equals("*")) {
+		if (s.equals("*")) {										//Similar to +
 			if (tfield.getText().equals("")) {
 				tfield.setText("");
 				temp = 1;
@@ -363,42 +363,42 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 			}
 			tfield.requestFocus();
 		}
-		if (s.equals("MC")) {
+		if (s.equals("MC")) {										//Clears variable stored in memory
 			m1 = 0;
 			tfield.setText("");
 		}
 		if (s.equals("MR")) {
 			tfield.setText("");
-			tfield.setText(tfield.getText() + m1);
+			tfield.setText(tfield.getText() + m1);					//Retrieves variable stored in memory
 		}
 		if (s.equals("M+")) {
 			if (k == 1) {
-				m1 = Double.parseDouble(tfield.getText());
+				m1 = Double.parseDouble(tfield.getText());			//No variable exists in memory, thus adds text input value to the memory
 				k++;
 			} else {
-				m1 += Double.parseDouble(tfield.getText());
-				tfield.setText("" + m1);
+				m1 += Double.parseDouble(tfield.getText());			//Variable in memory exists, thus adds this value to the one in memory
+				tfield.setText("" + m1);							//Displays the new result in input field
 			}
 		}
 		if (s.equals("M-")) {
 			if (k == 1) {
-				m1 = Double.parseDouble(tfield.getText());
+				m1 = Double.parseDouble(tfield.getText());			//No variable exists in memory, thus adds this variable to the memory
 				k++;
 			} else {
-				m1 -= Double.parseDouble(tfield.getText());
+				m1 -= Double.parseDouble(tfield.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
 				tfield.setText("" + m1);
 			}
 		}
 		if (s.equals("Sqrt")) {
-			if (tfield.getText().equals("")) {
+			if (tfield.getText().equals("")) {						//Doesnt care less if the text input is empty
 				tfield.setText("");
 			} else {
-				a = Math.sqrt(Double.parseDouble(tfield.getText()));
+				a = Math.sqrt(Double.parseDouble(tfield.getText()));	//Else calculates the square root
 				tfield.setText("");
 				tfield.setText(tfield.getText() + a);
 			}
 		}
-		if (s.equals("SIN")) {
+		if (s.equals("SIN")) {										//Calculates sin of the given angle (radians)
 			if (tfield.getText().equals("")) {
 				tfield.setText("");
 			} else {
@@ -407,7 +407,7 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 				tfield.setText(tfield.getText() + a);
 			}
 		}
-		if (s.equals("COS")) {
+		if (s.equals("COS")) {										//Calculates cos of the given angle
 			if (tfield.getText().equals("")) {
 				tfield.setText("");
 			} else {
@@ -416,7 +416,7 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 				tfield.setText(tfield.getText() + a);
 			}
 		}
-		if (s.equals("TAN")) {
+		if (s.equals("TAN")) {										//Calculates tan of the given angle
 			if (tfield.getText().equals("")) {
 				tfield.setText("");
 			} else {
@@ -425,11 +425,11 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 				tfield.setText(tfield.getText() + a);
 			}
 		}
-		if (s.equals("=")) {
+		if (s.equals("=")) {										//Does something when = button is pressed
 			if (tfield.getText().equals("")) {
 				tfield.setText("");
 			} else {
-				temp1 = Double.parseDouble(tfield.getText());
+				temp1 = Double.parseDouble(tfield.getText());		//Gets the second variable, currently in the text input
 				switch (ch) {
 				case '+':
 					result = temp + temp1;
@@ -445,11 +445,11 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 					break;
 				}
 				tfield.setText("");
-				tfield.setText(tfield.getText() + result);
+				tfield.setText(tfield.getText() + result);			//Modifies text input to currently stored answer
 				z = 1;
 			}
 		}
-		if (s.equals("n!")) {
+		if (s.equals("n!")) {										//Calculates n! and puts the value in the input box
 			if (tfield.getText().equals("")) {
 				tfield.setText("");
 			} else {
@@ -472,9 +472,8 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 	}
 
 	public static void main(String args[]) {
-		try {
-			UIManager
-					.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+		try {														//If the OS is Windows, the buttons and the text box will look like those you see in the Windows Operating System, else displays in the default Swing style
+			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch (Exception e) {
 		}
 		ScientificCalculator f = new ScientificCalculator();
