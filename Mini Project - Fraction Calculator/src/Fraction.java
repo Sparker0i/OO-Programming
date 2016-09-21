@@ -43,6 +43,13 @@ public class Fraction {
   this.denominator = 1;
   incrementCount();
  }
+ 
+ Fraction (String s) {
+	 int slashIndex = s.indexOf('/');
+	 this.numerator = Integer.parseInt(s.substring(0, slashIndex));
+	 this.denominator = Integer.parseInt(s.substring(slashIndex + 1));
+	 incrementCount();
+ }
 
  public static void incrementCount() {
   count++;
