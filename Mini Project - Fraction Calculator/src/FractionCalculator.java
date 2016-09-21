@@ -3,7 +3,7 @@ import javax.swing.*;
 import java.awt.event.*;
 
 @SuppressWarnings("serial")
-public class ScientificCalculator extends JFrame implements ActionListener {
+public class FractionCalculator extends JFrame implements ActionListener {
 	JTextField tfield;
 	double temp, temp1, result, a;
 	static double m1, m2;
@@ -15,7 +15,7 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 	Container cont;										//Container
 	JPanel textPanel, buttonpanel;						//Panel/Layout
 
-	ScientificCalculator() {
+	FractionCalculator() {
 		cont = getContentPane();			//Layer To Hold Objects
 		cont.setLayout(new BorderLayout());		//BL arranges components in Regions E , W , N , S, Center. Each region has only one component
 		JPanel textpanel = new JPanel();		//Layout
@@ -476,7 +476,7 @@ public class ScientificCalculator extends JFrame implements ActionListener {
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
 		} catch (Exception e) {
 		}
-		ScientificCalculator f = new ScientificCalculator();
+		FractionCalculator f = new FractionCalculator();
 		f.setTitle("Scientific Calculator");
 		f.pack();
 		f.setVisible(true);
