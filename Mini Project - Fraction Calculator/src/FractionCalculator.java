@@ -8,7 +8,7 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class FractionCalculator extends JFrame {
 	JTextField numInput, denInput;
-	double temp, temp1, result, a;
+	int temp, temp1, result, a;
 	static double m1, m2;
 	int k = 1, x = 0, y = 0, z = 0;
 	char ch;
@@ -155,34 +155,38 @@ public class FractionCalculator extends JFrame {
 		    				if (textField.getText().equals("")) {
 		    					textField.setText("");									//If Input text is null, let it do nothing
 		    				} else {
-		    					a = Math.log(Double.parseDouble(textField.getText()));	//Parses the String, gets its Log					
+		    					a = (int) Math.log(Integer.parseInt(textField.getText()));	//Parses the String, gets its Log					
 		    					textField.setText("");
 		    					textField.setText(textField.getText() + a);				//Sets it back to the text input
 		    				}
 		    			}
 		    			if (s.equals("1/x")) {
-		    				if (textField.getText().equals("")) {						//If input text is null, this snippet doesn't care less.
-		    					textField.setText("");
-		    				} else {
-		    					a = 1 / Double.parseDouble(textField.getText());		//Inverts the number after parsing it
-		    					textField.setText("");
-		    					textField.setText(textField.getText() + a);
+		    				if (numInput.getText().equals("") || Integer.parseInt(numInput.getText()) == 0) {						//If input text is null, this snippet doesn't care less.
+		    					numInput.setText("0");
+		    				}
+		    				else if (denInput.getText().equals("")) {
+		    					denInput.setText("1");
+		    				}
+		    				else {
+		    					String s1 = numInput.getText() , s2 = denInput.getText();
+		    					numInput.setText(s2);
+		    					denInput.setText(s1);
 		    				}
 		    			}
-		    			if (s.equals("Exp")) {
+		    			/*if (s.equals("Exp")) {
 		    				if (textField.getText().equals("")) {
 		    					textField.setText("");
 		    				} else {
-		    					a = Math.exp(Double.parseDouble(textField.getText()));	//Calculates e ^ a
+		    					a = (int) Math.exp(Integer.parseInt(textField.getText()));	//Calculates e ^ a
 		    					textField.setText("");
 		    					textField.setText(textField.getText() + a);				//Sets it back to the text field.
 		    				}
-		    			}
+		    			}*/
 		    			if (s.equals("x^2")) {
 		    				if (textField.getText().equals("")) {
 		    					textField.setText("");
 		    				} else {
-		    					a = Math.pow(Double.parseDouble(textField.getText()), 2);	//Parses the number, squares it
+		    					a = (int) Math.pow(Integer.parseInt(textField.getText()), 2);	//Parses the number, squares it
 		    					textField.setText("");
 		    					textField.setText(textField.getText() + a);
 		    				}
@@ -191,31 +195,31 @@ public class FractionCalculator extends JFrame {
 		    				if (textField.getText().equals("")) {
 		    					textField.setText("");
 		    				} else {
-		    					a = Math.pow(Double.parseDouble(textField.getText()), 3);	//Parses the number, cubes it
+		    					a = (int) Math.pow(Integer.parseInt(textField.getText()), 3);	//Parses the number, cubes it
 		    					textField.setText("");
 		    					textField.setText(textField.getText() + a);
 		    				}
 		    			}
 		    			if (s.equals("+/-")) {										//I've modified this one for my purposes, look at this only if you could care less.
-		    					a = Double.parseDouble(textField.getText());
+		    					a = Integer.parseInt(textField.getText());
 		    					a *= -1;
 		    					textField.setText("" + a);
 		    			}
-		    			if (s.equals(".")) {
+		    			/*if (s.equals(".")) {
 		    				if (y == 0) {											//I don't get this completely, but I think it means if it hasn't already been done
 		    					textField.setText(textField.getText() + ".");
 		    					y = 1;
 		    				} else {
 		    					textField.setText(textField.getText());
 		    				}
-		    			}
+		    			}*/
 		    			if (s.equals("+")) {
 		    				if (textField.getText().equals("")) {						//If null, sets the addend to be 0, and the operator as +
 		    					textField.setText("");
 		    					temp = 0;
 		    					ch = '+';
 		    				} else {
-		    					temp = Double.parseDouble(textField.getText());		//Parses the number input
+		    					temp = Integer.parseInt(textField.getText());		//Parses the number input
 		    					textField.setText("");									//Sets input box empty so as to enter the next number
 		    					ch = '+';											//Sets the operator to +
 		    					y = 0;												//Don't know the function of these
@@ -231,7 +235,7 @@ public class FractionCalculator extends JFrame {
 		    				} else {
 		    					x = 0;
 		    					y = 0;
-		    					temp = Double.parseDouble(textField.getText());
+		    					temp = Integer.parseInt(textField.getText());
 		    					textField.setText("");
 		    					ch = '-';
 		    				}
@@ -245,7 +249,7 @@ public class FractionCalculator extends JFrame {
 		    				} else {
 		    					x = 0;
 		    					y = 0;
-		    					temp = Double.parseDouble(textField.getText());
+		    					temp = Integer.parseInt(textField.getText());
 		    					ch = '/';
 		    					textField.setText("");
 		    				}
@@ -259,7 +263,7 @@ public class FractionCalculator extends JFrame {
 		    				} else {
 		    					x = 0;
 		    					y = 0;
-		    					temp = Double.parseDouble(textField.getText());
+		    					temp = Integer.parseInt(textField.getText());
 		    					ch = '*';
 		    					textField.setText("");
 		    				}
@@ -275,19 +279,19 @@ public class FractionCalculator extends JFrame {
 		    			}
 		    			if (s.equals("M+")) {
 		    				if (k == 1) {
-		    					m1 = Double.parseDouble(textField.getText());			//No variable exists in memory, thus adds text input value to the memory
+		    					m1 = Integer.parseInt(textField.getText());			//No variable exists in memory, thus adds text input value to the memory
 		    					k++;
 		    				} else {
-		    					m1 += Double.parseDouble(textField.getText());			//Variable in memory exists, thus adds this value to the one in memory
+		    					m1 += Integer.parseInt(textField.getText());			//Variable in memory exists, thus adds this value to the one in memory
 		    					textField.setText("" + m1);							//Displays the new result in input field
 		    				}
 		    			}
 		    			if (s.equals("M-")) {
 		    				if (k == 1) {
-		    					m1 = Double.parseDouble(textField.getText());			//No variable exists in memory, thus adds this variable to the memory
+		    					m1 = Integer.parseInt(textField.getText());			//No variable exists in memory, thus adds this variable to the memory
 		    					k++;
 		    				} else {
-		    					m1 -= Double.parseDouble(textField.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
+		    					m1 -= Integer.parseInt(textField.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
 		    					textField.setText("" + m1);
 		    				}
 		    			}
@@ -295,16 +299,16 @@ public class FractionCalculator extends JFrame {
 		    				if (textField.getText().equals("")) {						//Doesnt care less if the text input is empty
 		    					textField.setText("");
 		    				} else {
-		    					a = Math.sqrt(Double.parseDouble(textField.getText()));	//Else calculates the square root
+		    					a = (int) Math.sqrt(Integer.parseInt(textField.getText()));	//Else calculates the square root
 		    					textField.setText("");
 		    					textField.setText(textField.getText() + a);
 		    				}
 		    			}
-		    			if (s.equals("SIN")) {										//Calculates sin of the given angle (radians)
+		    			/*if (s.equals("SIN")) {										//Calculates sin of the given angle (radians)
 		    				if (textField.getText().equals("")) {
 		    					textField.setText("");
 		    				} else {
-		    					a = Math.sin(Double.parseDouble(textField.getText()));
+		    					a = Math.sin(Integer.parseInt(textField.getText()));
 		    					textField.setText("");
 		    					textField.setText(textField.getText() + a);
 		    				}
@@ -313,7 +317,7 @@ public class FractionCalculator extends JFrame {
 		    				if (textField.getText().equals("")) {
 		    					textField.setText("");
 		    				} else {
-		    					a = Math.cos(Double.parseDouble(textField.getText()));
+		    					a = (int) Math.cos(Integer.parseInt(textField.getText()));
 		    					textField.setText("");
 		    					textField.setText(textField.getText() + a);
 		    				}
@@ -322,16 +326,16 @@ public class FractionCalculator extends JFrame {
 		    				if (textField.getText().equals("")) {
 		    					textField.setText("");
 		    				} else {
-		    					a = Math.tan(Double.parseDouble(textField.getText()));
+		    					a = (int) Math.tan(Integer.parseInt(textField.getText()));
 		    					textField.setText("");
 		    					textField.setText(textField.getText() + a);
 		    				}
-		    			}
+		    			}*/
 		    			if (s.equals("=")) {										//Does something when = button is pressed
 		    				if (textField.getText().equals("")) {
 		    					textField.setText("");
 		    				} else {
-		    					temp1 = Double.parseDouble(textField.getText());		//Gets the second variable, currently in the text input
+		    					temp1 = Integer.parseInt(textField.getText());		//Gets the second variable, currently in the text input
 		    					switch (ch) {
 		    					case '+':
 		    						result = temp + temp1;
@@ -351,17 +355,17 @@ public class FractionCalculator extends JFrame {
 		    					z = 1;
 		    				}
 		    			}
-		    			if (s.equals("n!")) {										//Calculates n! and puts the value in the input box
+		    			/*if (s.equals("n!")) {										//Calculates n! and puts the value in the input box
 		    				if (textField.getText().equals("")) {
 		    					textField.setText("");
 		    				} else {
-		    					a = fact(Double.parseDouble(textField.getText()));
+		    					a = fact(Integer.parseInt(textField.getText()));
 		    					textField.setText("");
 		    					textField.setText(textField.getText() + a);
 		    				}
-		    			}
+		    			}*/
 		    			textField.requestFocus();
-		    }
+		    			}
 		};
 		denPanel.add(denInput);										//To add the text field to the desired panel
 		buttonpanel = new JPanel();									//A New Panel For Buttons
@@ -588,7 +592,7 @@ public class FractionCalculator extends JFrame {
 				if (numInput.getText().equals("")) {
 					numInput.setText("");									//If Input text is null, let it do nothing
 				} else {
-					a = Math.log(Double.parseDouble(numInput.getText()));	//Parses the String, gets its Log					
+					a = Math.log(Integer.parseInt(numInput.getText()));	//Parses the String, gets its Log					
 					numInput.setText("");
 					numInput.setText(numInput.getText() + a);				//Sets it back to the text input
 				}
@@ -597,7 +601,7 @@ public class FractionCalculator extends JFrame {
 				if (numInput.getText().equals("")) {						//If input text is null, this snippet doesn't care less.
 					numInput.setText("");
 				} else {
-					a = 1 / Double.parseDouble(numInput.getText());		//Inverts the number after parsing it
+					a = 1 / Integer.parseInt(numInput.getText());		//Inverts the number after parsing it
 					numInput.setText("");
 					numInput.setText(numInput.getText() + a);
 				}
@@ -606,7 +610,7 @@ public class FractionCalculator extends JFrame {
 				if (numInput.getText().equals("")) {
 					numInput.setText("");
 				} else {
-					a = Math.exp(Double.parseDouble(numInput.getText()));	//Calculates e ^ a
+					a = Math.exp(Integer.parseInt(numInput.getText()));	//Calculates e ^ a
 					numInput.setText("");
 					numInput.setText(numInput.getText() + a);				//Sets it back to the text field.
 				}
@@ -615,7 +619,7 @@ public class FractionCalculator extends JFrame {
 				if (numInput.getText().equals("")) {
 					numInput.setText("");
 				} else {
-					a = Math.pow(Double.parseDouble(numInput.getText()), 2);	//Parses the number, squares it
+					a = Math.pow(Integer.parseInt(numInput.getText()), 2);	//Parses the number, squares it
 					numInput.setText("");
 					numInput.setText(numInput.getText() + a);
 				}
@@ -624,13 +628,13 @@ public class FractionCalculator extends JFrame {
 				if (numInput.getText().equals("")) {
 					numInput.setText("");
 				} else {
-					a = Math.pow(Double.parseDouble(numInput.getText()), 3);	//Parses the number, cubes it
+					a = Math.pow(Integer.parseInt(numInput.getText()), 3);	//Parses the number, cubes it
 					numInput.setText("");
 					numInput.setText(numInput.getText() + a);
 				}
 			}
 			if (s.equals("+/-")) {										//I've modified this one for my purposes, look at this only if you could care less.
-					a = Double.parseDouble(numInput.getText());
+					a = Integer.parseInt(numInput.getText());
 					a *= -1;
 					numInput.setText("" + a);
 			}
@@ -648,7 +652,7 @@ public class FractionCalculator extends JFrame {
 					temp = 0;
 					ch = '+';
 				} else {
-					temp = Double.parseDouble(numInput.getText());		//Parses the number input
+					temp = Integer.parseInt(numInput.getText());		//Parses the number input
 					numInput.setText("");									//Sets input box empty so as to enter the next number
 					ch = '+';											//Sets the operator to +
 					y = 0;												//Don't know the function of these
@@ -664,7 +668,7 @@ public class FractionCalculator extends JFrame {
 				} else {
 					x = 0;
 					y = 0;
-					temp = Double.parseDouble(numInput.getText());
+					temp = Integer.parseInt(numInput.getText());
 					numInput.setText("");
 					ch = '-';
 				}
@@ -678,7 +682,7 @@ public class FractionCalculator extends JFrame {
 				} else {
 					x = 0;
 					y = 0;
-					temp = Double.parseDouble(numInput.getText());
+					temp = Integer.parseInt(numInput.getText());
 					ch = '/';
 					numInput.setText("");
 				}
@@ -692,7 +696,7 @@ public class FractionCalculator extends JFrame {
 				} else {
 					x = 0;
 					y = 0;
-					temp = Double.parseDouble(numInput.getText());
+					temp = Integer.parseInt(numInput.getText());
 					ch = '*';
 					numInput.setText("");
 				}
@@ -708,19 +712,19 @@ public class FractionCalculator extends JFrame {
 			}
 			if (s.equals("M+")) {
 				if (k == 1) {
-					m1 = Double.parseDouble(numInput.getText());			//No variable exists in memory, thus adds text input value to the memory
+					m1 = Integer.parseInt(numInput.getText());			//No variable exists in memory, thus adds text input value to the memory
 					k++;
 				} else {
-					m1 += Double.parseDouble(numInput.getText());			//Variable in memory exists, thus adds this value to the one in memory
+					m1 += Integer.parseInt(numInput.getText());			//Variable in memory exists, thus adds this value to the one in memory
 					numInput.setText("" + m1);							//Displays the new result in input field
 				}
 			}
 			if (s.equals("M-")) {
 				if (k == 1) {
-					m1 = Double.parseDouble(numInput.getText());			//No variable exists in memory, thus adds this variable to the memory
+					m1 = Integer.parseInt(numInput.getText());			//No variable exists in memory, thus adds this variable to the memory
 					k++;
 				} else {
-					m1 -= Double.parseDouble(numInput.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
+					m1 -= Integer.parseInt(numInput.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
 					numInput.setText("" + m1);
 				}
 			}
@@ -728,7 +732,7 @@ public class FractionCalculator extends JFrame {
 				if (numInput.getText().equals("")) {						//Doesnt care less if the text input is empty
 					numInput.setText("");
 				} else {
-					a = Math.sqrt(Double.parseDouble(numInput.getText()));	//Else calculates the square root
+					a = Math.sqrt(Integer.parseInt(numInput.getText()));	//Else calculates the square root
 					numInput.setText("");
 					numInput.setText(numInput.getText() + a);
 				}
@@ -737,7 +741,7 @@ public class FractionCalculator extends JFrame {
 				if (numInput.getText().equals("")) {
 					numInput.setText("");
 				} else {
-					a = Math.sin(Double.parseDouble(numInput.getText()));
+					a = Math.sin(Integer.parseInt(numInput.getText()));
 					numInput.setText("");
 					numInput.setText(numInput.getText() + a);
 				}
@@ -746,7 +750,7 @@ public class FractionCalculator extends JFrame {
 				if (numInput.getText().equals("")) {
 					numInput.setText("");
 				} else {
-					a = Math.cos(Double.parseDouble(numInput.getText()));
+					a = Math.cos(Integer.parseInt(numInput.getText()));
 					numInput.setText("");
 					numInput.setText(numInput.getText() + a);
 				}
@@ -755,7 +759,7 @@ public class FractionCalculator extends JFrame {
 				if (numInput.getText().equals("")) {
 					numInput.setText("");
 				} else {
-					a = Math.tan(Double.parseDouble(numInput.getText()));
+					a = Math.tan(Integer.parseInt(numInput.getText()));
 					numInput.setText("");
 					numInput.setText(numInput.getText() + a);
 				}
@@ -764,7 +768,7 @@ public class FractionCalculator extends JFrame {
 				if (numInput.getText().equals("")) {
 					numInput.setText("");
 				} else {
-					temp1 = Double.parseDouble(numInput.getText());		//Gets the second variable, currently in the text input
+					temp1 = Integer.parseInt(numInput.getText());		//Gets the second variable, currently in the text input
 					switch (ch) {
 					case '+':
 						result = temp + temp1;
@@ -788,7 +792,7 @@ public class FractionCalculator extends JFrame {
 				if (numInput.getText().equals("")) {
 					numInput.setText("");
 				} else {
-					a = fact(Double.parseDouble(numInput.getText()));
+					a = fact(Integer.parseInt(numInput.getText()));
 					numInput.setText("");
 					numInput.setText(numInput.getText() + a);
 				}
@@ -896,7 +900,7 @@ public class FractionCalculator extends JFrame {
 				if (denInput.getText().equals("")) {
 					denInput.setText("");									//If Input text is null, let it do nothing
 				} else {
-					a = Math.log(Double.parseDouble(denInput.getText()));	//Parses the String, gets its Log					
+					a = Math.log(Integer.parseInt(denInput.getText()));	//Parses the String, gets its Log					
 					denInput.setText("");
 					denInput.setText(denInput.getText() + a);				//Sets it back to the text input
 				}
@@ -905,7 +909,7 @@ public class FractionCalculator extends JFrame {
 				if (denInput.getText().equals("")) {						//If input text is null, this snippet doesn't care less.
 					denInput.setText("");
 				} else {
-					a = 1 / Double.parseDouble(denInput.getText());		//Inverts the number after parsing it
+					a = 1 / Integer.parseInt(denInput.getText());		//Inverts the number after parsing it
 					denInput.setText("");
 					denInput.setText(denInput.getText() + a);
 				}
@@ -914,7 +918,7 @@ public class FractionCalculator extends JFrame {
 				if (denInput.getText().equals("")) {
 					denInput.setText("");
 				} else {
-					a = Math.exp(Double.parseDouble(denInput.getText()));	//Calculates e ^ a
+					a = Math.exp(Integer.parseInt(denInput.getText()));	//Calculates e ^ a
 					denInput.setText("");
 					denInput.setText(denInput.getText() + a);				//Sets it back to the text field.
 				}
@@ -923,7 +927,7 @@ public class FractionCalculator extends JFrame {
 				if (denInput.getText().equals("")) {
 					denInput.setText("");
 				} else {
-					a = Math.pow(Double.parseDouble(denInput.getText()), 2);	//Parses the number, squares it
+					a = Math.pow(Integer.parseInt(denInput.getText()), 2);	//Parses the number, squares it
 					denInput.setText("");
 					denInput.setText(denInput.getText() + a);
 				}
@@ -932,13 +936,13 @@ public class FractionCalculator extends JFrame {
 				if (denInput.getText().equals("")) {
 					denInput.setText("");
 				} else {
-					a = Math.pow(Double.parseDouble(denInput.getText()), 3);	//Parses the number, cubes it
+					a = Math.pow(Integer.parseInt(denInput.getText()), 3);	//Parses the number, cubes it
 					denInput.setText("");
 					denInput.setText(denInput.getText() + a);
 				}
 			}
 			if (s.equals("+/-")) {										//I've modified this one for my purposes, look at this only if you could care less.
-					a = Double.parseDouble(denInput.getText());
+					a = Integer.parseInt(denInput.getText());
 					a *= -1;
 					denInput.setText("" + a);
 			}
@@ -956,7 +960,7 @@ public class FractionCalculator extends JFrame {
 					temp = 0;
 					ch = '+';
 				} else {
-					temp = Double.parseDouble(denInput.getText());		//Parses the number input
+					temp = Integer.parseInt(denInput.getText());		//Parses the number input
 					denInput.setText("");									//Sets input box empty so as to enter the next number
 					ch = '+';											//Sets the operator to +
 					y = 0;												//Don't know the function of these
@@ -972,7 +976,7 @@ public class FractionCalculator extends JFrame {
 				} else {
 					x = 0;
 					y = 0;
-					temp = Double.parseDouble(denInput.getText());
+					temp = Integer.parseInt(denInput.getText());
 					denInput.setText("");
 					ch = '-';
 				}
@@ -986,7 +990,7 @@ public class FractionCalculator extends JFrame {
 				} else {
 					x = 0;
 					y = 0;
-					temp = Double.parseDouble(denInput.getText());
+					temp = Integer.parseInt(denInput.getText());
 					ch = '/';
 					denInput.setText("");
 				}
@@ -1000,7 +1004,7 @@ public class FractionCalculator extends JFrame {
 				} else {
 					x = 0;
 					y = 0;
-					temp = Double.parseDouble(denInput.getText());
+					temp = Integer.parseInt(denInput.getText());
 					ch = '*';
 					denInput.setText("");
 				}
@@ -1016,19 +1020,19 @@ public class FractionCalculator extends JFrame {
 			}
 			if (s.equals("M+")) {
 				if (k == 1) {
-					m1 = Double.parseDouble(denInput.getText());			//No variable exists in memory, thus adds text input value to the memory
+					m1 = Integer.parseInt(denInput.getText());			//No variable exists in memory, thus adds text input value to the memory
 					k++;
 				} else {
-					m1 += Double.parseDouble(denInput.getText());			//Variable in memory exists, thus adds this value to the one in memory
+					m1 += Integer.parseInt(denInput.getText());			//Variable in memory exists, thus adds this value to the one in memory
 					denInput.setText("" + m1);							//Displays the new result in input field
 				}
 			}
 			if (s.equals("M-")) {
 				if (k == 1) {
-					m1 = Double.parseDouble(denInput.getText());			//No variable exists in memory, thus adds this variable to the memory
+					m1 = Integer.parseInt(denInput.getText());			//No variable exists in memory, thus adds this variable to the memory
 					k++;
 				} else {
-					m1 -= Double.parseDouble(denInput.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
+					m1 -= Integer.parseInt(denInput.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
 					denInput.setText("" + m1);
 				}
 			}
@@ -1036,7 +1040,7 @@ public class FractionCalculator extends JFrame {
 				if (denInput.getText().equals("")) {						//Doesnt care less if the text input is empty
 					denInput.setText("");
 				} else {
-					a = Math.sqrt(Double.parseDouble(denInput.getText()));	//Else calculates the square root
+					a = Math.sqrt(Integer.parseInt(denInput.getText()));	//Else calculates the square root
 					denInput.setText("");
 					denInput.setText(denInput.getText() + a);
 				}
@@ -1045,7 +1049,7 @@ public class FractionCalculator extends JFrame {
 				if (denInput.getText().equals("")) {
 					denInput.setText("");
 				} else {
-					a = Math.sin(Double.parseDouble(denInput.getText()));
+					a = Math.sin(Integer.parseInt(denInput.getText()));
 					denInput.setText("");
 					denInput.setText(denInput.getText() + a);
 				}
@@ -1054,7 +1058,7 @@ public class FractionCalculator extends JFrame {
 				if (denInput.getText().equals("")) {
 					denInput.setText("");
 				} else {
-					a = Math.cos(Double.parseDouble(denInput.getText()));
+					a = Math.cos(Integer.parseInt(denInput.getText()));
 					denInput.setText("");
 					denInput.setText(denInput.getText() + a);
 				}
@@ -1063,7 +1067,7 @@ public class FractionCalculator extends JFrame {
 				if (denInput.getText().equals("")) {
 					denInput.setText("");
 				} else {
-					a = Math.tan(Double.parseDouble(denInput.getText()));
+					a = Math.tan(Integer.parseInt(denInput.getText()));
 					denInput.setText("");
 					denInput.setText(denInput.getText() + a);
 				}
@@ -1072,7 +1076,7 @@ public class FractionCalculator extends JFrame {
 				if (denInput.getText().equals("")) {
 					denInput.setText("");
 				} else {
-					temp1 = Double.parseDouble(denInput.getText());		//Gets the second variable, currently in the text input
+					temp1 = Integer.parseInt(denInput.getText());		//Gets the second variable, currently in the text input
 					switch (ch) {
 					case '+':
 						result = temp + temp1;
@@ -1096,7 +1100,7 @@ public class FractionCalculator extends JFrame {
 				if (denInput.getText().equals("")) {
 					denInput.setText("");
 				} else {
-					a = fact(Double.parseDouble(denInput.getText()));
+					a = fact(Integer.parseInt(denInput.getText()));
 					denInput.setText("");
 					denInput.setText(denInput.getText() + a);
 				}
