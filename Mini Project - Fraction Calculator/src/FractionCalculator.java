@@ -8,7 +8,8 @@ import java.awt.event.*;
 @SuppressWarnings("serial")
 public class FractionCalculator extends JFrame {
 	JTextField numInput, denInput;
-	int temp, temp1, result, a;
+	int a;
+	Fraction temp, temp1, result;
 	static double m1, m2;
 	int k = 1, x = 0, y = 0, z = 0;
 	char ch;
@@ -29,7 +30,8 @@ public class FractionCalculator extends JFrame {
 			public void keyTyped(KeyEvent keyevent) {				//To recognize which key was pressed
 				char c = keyevent.getKeyChar();						//Getting Key ASCII Value
 				if (c >= '0' && c <= '9') {
-				} else {
+				} 
+				else {
 					keyevent.consume();								//To Ignore if any other key was pressed
 				}
 			}
@@ -41,7 +43,8 @@ public class FractionCalculator extends JFrame {
 			public void keyTyped(KeyEvent keyevent) {				//To recognize which key was pressed
 				char c = keyevent.getKeyChar();						//Getting Key ASCII Value
 				if (c >= '0' && c <= '9') {
-				} else {
+				} 
+				else {
 					keyevent.consume();								//To Ignore if any other key was pressed
 				}
 			}
@@ -183,12 +186,20 @@ public class FractionCalculator extends JFrame {
 		    				}
 		    			}*/
 		    			if (s.equals("x^2")) {
-		    				if (textField.getText().equals("")) {
-		    					textField.setText("");
-		    				} else {
-		    					a = (int) Math.pow(Integer.parseInt(textField.getText()), 2);	//Parses the number, squares it
-		    					textField.setText("");
-		    					textField.setText(textField.getText() + a);
+		    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+		    					numInput.setText("0");
+		    					denInput.setText("1");
+		    				} 
+		    				else if (numInput.getText().equals("")) {
+		    					numInput.setText("0");
+		    				}
+		    				else if (denInput.getText().equals("")) {
+		    					denInput.setText("1");
+		    				}
+		    				else {
+		    					int a = Integer.parseInt(numInput.getText()) , b = Integer.parseInt(denInput.getText());
+		    					numInput.setText(Integer.toString(a * a));
+		    					denInput.setText(Integer.toString(b * b));
 		    				}
 		    			}
 		    			if (s.equals("x^3")) {
@@ -214,58 +225,103 @@ public class FractionCalculator extends JFrame {
 		    				}
 		    			}*/
 		    			if (s.equals("+")) {
-		    				if (textField.getText().equals("")) {						//If null, sets the addend to be 0, and the operator as +
+		    				/*if (textField.getText().equals("")) {						//If null, sets the addend to be 0, and the operator as +
 		    					textField.setText("");
 		    					temp = 0;
 		    					ch = '+';
-		    				} else {
-		    					temp = Integer.parseInt(textField.getText());		//Parses the number input
-		    					textField.setText("");									//Sets input box empty so as to enter the next number
+		    				}*/
+		    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+		    					numInput.setText("0");
+		    					denInput.setText("1");
+		    					temp = new Fraction(0,1);
+		    				} 
+		    				else if (numInput.getText().equals("")) {
+		    					numInput.setText("0");
+		    					temp = new Fraction(0 , 1);
+		    				}
+		    				else if (denInput.getText().equals("")) {
+		    					denInput.setText("1");
+		    					temp = new Fraction(0 , 1);
+		    				}
+		    				else {
+		    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+		    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+		    					denInput.setText("1");
 		    					ch = '+';											//Sets the operator to +
 		    					y = 0;												//Don't know the function of these
 		    					x = 0;
 		    				}
-		    				//textField.requestFocus();
+		    				textField.requestFocus();
 		    			}
 		    			if (s.equals("-")) {
-		    				if (textField.getText().equals("")) {						//Similar to +
-		    					textField.setText("");
-		    					temp = 0;
-		    					ch = '-';
-		    				} else {
+		    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+		    					numInput.setText("0");
+		    					denInput.setText("1");
+		    					temp = new Fraction(0,1);
+		    				} 
+		    				else if (numInput.getText().equals("")) {
+		    					numInput.setText("0");
+		    					temp = new Fraction(0 , 1);
+		    				}
+		    				else if (denInput.getText().equals("")) {
+		    					denInput.setText("1");
+		    					temp = new Fraction(0 , 1);
+		    				}
+		    				else {
+		    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+		    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+		    					denInput.setText("1");
+		    					ch = '-';											//Sets the operator to +
+		    					y = 0;												//Don't know the function of these
 		    					x = 0;
-		    					y = 0;
-		    					temp = Integer.parseInt(textField.getText());
-		    					textField.setText("");
-		    					ch = '-';
 		    				}
 		    				textField.requestFocus();
 		    			}
 		    			if (s.equals("/")) {										//Similar to +
-		    				if (textField.getText().equals("")) {
-		    					textField.setText("");
-		    					temp = 1;
-		    					ch = '/';
-		    				} else {
+		    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+		    					numInput.setText("0");
+		    					denInput.setText("1");
+		    					temp = new Fraction(0,1);
+		    				} 
+		    				else if (numInput.getText().equals("")) {
+		    					numInput.setText("0");
+		    					temp = new Fraction(0 , 1);
+		    				}
+		    				else if (denInput.getText().equals("")) {
+		    					denInput.setText("1");
+		    					temp = new Fraction(0 , 1);
+		    				}
+		    				else {
+		    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+		    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+		    					denInput.setText("1");
+		    					ch = '/';											//Sets the operator to +
+		    					y = 0;												//Don't know the function of these
 		    					x = 0;
-		    					y = 0;
-		    					temp = Integer.parseInt(textField.getText());
-		    					ch = '/';
-		    					textField.setText("");
 		    				}
 		    				textField.requestFocus();
 		    			}
 		    			if (s.equals("*")) {										//Similar to +
-		    				if (textField.getText().equals("")) {
-		    					textField.setText("");
-		    					temp = 1;
-		    					ch = '*';
-		    				} else {
+		    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+		    					numInput.setText("0");
+		    					denInput.setText("1");
+		    					temp = new Fraction(0,1);
+		    				} 
+		    				else if (numInput.getText().equals("")) {
+		    					numInput.setText("0");
+		    					temp = new Fraction(0 , 1);
+		    				}
+		    				else if (denInput.getText().equals("")) {
+		    					denInput.setText("1");
+		    					temp = new Fraction(0 , 1);
+		    				}
+		    				else {
+		    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+		    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+		    					denInput.setText("1");
+		    					ch = '*';											//Sets the operator to +
+		    					y = 0;												//Don't know the function of these
 		    					x = 0;
-		    					y = 0;
-		    					temp = Integer.parseInt(textField.getText());
-		    					ch = '*';
-		    					textField.setText("");
 		    				}
 		    				textField.requestFocus();
 		    			}
@@ -335,23 +391,37 @@ public class FractionCalculator extends JFrame {
 		    				if (textField.getText().equals("")) {
 		    					textField.setText("");
 		    				} else {
-		    					temp1 = Integer.parseInt(textField.getText());		//Gets the second variable, currently in the text input
+		    					if (numInput.getText().equals("") && denInput.getText().equals("")) {
+			    					temp1 = new Fraction(0,1);
+			    				} 
+			    				else if (numInput.getText().equals("")) {
+			    					numInput.setText("0");
+			    					temp1 = new Fraction(0 , 1);
+			    				}
+			    				else if (denInput.getText().equals("")) {
+			    					denInput.setText("1");
+			    					temp1 = new Fraction(0 , 1);
+			    				}
+			    				else {
+			    					temp1 = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+			    				}
+			    				textField.requestFocus();
 		    					switch (ch) {
 		    					case '+':
-		    						result = temp + temp1;
+		    						result = temp.add(temp1);
 		    						break;
 		    					case '-':
-		    						result = temp - temp1;
+		    						result = temp.subtract(temp1);
 		    						break;
 		    					case '/':
-		    						result = temp / temp1;
+		    						result = temp.divide(temp1);
 		    						break;
 		    					case '*':
-		    						result = temp * temp1;
+		    						result = temp.multiply(temp1);
 		    						break;
 		    					}
-		    					textField.setText("");
-		    					textField.setText(textField.getText() + result);			//Modifies text input to currently stored answer
+		    					numInput.setText(Integer.toString(result.getNumerator()));
+		    					denInput.setText(Integer.toString(result.getDenominator()));
 		    					z = 1;
 		    				}
 		    			}

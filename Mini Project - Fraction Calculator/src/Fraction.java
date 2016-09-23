@@ -58,6 +58,7 @@ public class Fraction {
  public static void printCount() {
   System.out.println("count = " + count);
  }
+ 
  public Fraction inverse() {
   Fraction f = new Fraction(denominator, numerator);
   return f;
@@ -88,12 +89,6 @@ public class Fraction {
   System.out.print(this.numerator + "/" + this.denominator);
  }
 
- public Fraction computeInverse() {
-  Fraction inv = new Fraction(this.denominator, this.numerator);
-  return inv;
- }
-
-
  public MixedFraction toMixedFraction() {
  	MixedFraction f = new MixedFraction(0 , getNumerator() , getDenominator());
  	f.setWholeNum(getNumerator() / getDenominator());
@@ -121,4 +116,14 @@ public class Fraction {
   i.reduce();
   return i;
  }
+ 
+ public Fraction divide(Fraction frac) {
+	  int n, d;
+	  frac = frac.inverse();
+	  n = this.getNumerator() * frac.getNumerator();
+	  d = this.getDenominator() * frac.getDenominator();
+	  Fraction i = new Fraction(n, d);
+	  i.reduce();
+	  return i;
+	 }
 }
