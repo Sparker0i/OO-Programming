@@ -10,7 +10,7 @@ public class FractionCalculator extends JFrame {
 	JTextField numInput, denInput;
 	int a;
 	Fraction temp, temp1, result;
-	static double m1, m2;
+	static Fraction m1, m2;
 	int k = 1, x = 0, y = 0, z = 0;
 	char ch;
 	JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, zero, clr, pow2, pow3, exp,
@@ -326,28 +326,30 @@ public class FractionCalculator extends JFrame {
 		    				textField.requestFocus();
 		    			}
 		    			if (s.equals("MC")) {										//Clears variable stored in memory
-		    				m1 = 0;
-		    				textField.setText("");
+		    				m1 = new Fraction(0 , 1);
+		    				numInput.setText("0");
+		    				denInput.setText("1");
 		    			}
 		    			if (s.equals("MR")) {
-		    				textField.setText("");
-		    				textField.setText(textField.getText() + m1);					//Retrieves variable stored in memory
+		    				numInput.setText("");
+		    				denInput.setText("");
+		    				numInput.setText(numInput.getText() + m1.getNumerator());					//Retrieves variable stored in memory
 		    			}
 		    			if (s.equals("M+")) {
 		    				if (k == 1) {
-		    					m1 = Integer.parseInt(textField.getText());			//No variable exists in memory, thus adds text input value to the memory
+		    					m1 = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//No variable exists in memory, thus adds text input value to the memory
 		    					k++;
 		    				} else {
-		    					m1 += Integer.parseInt(textField.getText());			//Variable in memory exists, thus adds this value to the one in memory
+		    					m1 = m1.add(new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText())));			//Variable in memory exists, thus adds this value to the one in memory
 		    					textField.setText("" + m1);							//Displays the new result in input field
 		    				}
 		    			}
 		    			if (s.equals("M-")) {
 		    				if (k == 1) {
-		    					m1 = Integer.parseInt(textField.getText());			//No variable exists in memory, thus adds this variable to the memory
+		    					m1 = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//No variable exists in memory, thus adds this variable to the memory
 		    					k++;
 		    				} else {
-		    					m1 -= Integer.parseInt(textField.getText());			//Variable already exists in memory, subtracts this value from the one stored in memory
+		    					m1 = m1.subtract(new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText())));			//Variable already exists in memory, subtracts this value from the one stored in memory
 		    					textField.setText("" + m1);
 		    				}
 		    			}
@@ -360,33 +362,6 @@ public class FractionCalculator extends JFrame {
 		    					textField.setText(textField.getText() + a);
 		    				}
 		    			}
-		    			/*if (s.equals("SIN")) {										//Calculates sin of the given angle (radians)
-		    				if (textField.getText().equals("")) {
-		    					textField.setText("");
-		    				} else {
-		    					a = Math.sin(Integer.parseInt(textField.getText()));
-		    					textField.setText("");
-		    					textField.setText(textField.getText() + a);
-		    				}
-		    			}
-		    			if (s.equals("COS")) {										//Calculates cos of the given angle
-		    				if (textField.getText().equals("")) {
-		    					textField.setText("");
-		    				} else {
-		    					a = (int) Math.cos(Integer.parseInt(textField.getText()));
-		    					textField.setText("");
-		    					textField.setText(textField.getText() + a);
-		    				}
-		    			}
-		    			if (s.equals("TAN")) {										//Calculates tan of the given angle
-		    				if (textField.getText().equals("")) {
-		    					textField.setText("");
-		    				} else {
-		    					a = (int) Math.tan(Integer.parseInt(textField.getText()));
-		    					textField.setText("");
-		    					textField.setText(textField.getText() + a);
-		    				}
-		    			}*/
 		    			if (s.equals("=")) {										//Does something when = button is pressed
 		    				if (textField.getText().equals("")) {
 		    					textField.setText("");
@@ -546,7 +521,7 @@ public class FractionCalculator extends JFrame {
 
 	double fact(double x) {
 		if (x < 0) {
-			return 0;
+			return 0;	
 		}
 		double i, s = 1;
 		for (i = 2; i <= x; i += 1.0)
