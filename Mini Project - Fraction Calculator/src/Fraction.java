@@ -99,12 +99,14 @@ public class Fraction {
  /** This method adds two fractions and returns the sum */
  public Fraction add(Fraction second) {
    Fraction i = new Fraction(this.getNumerator() * second.getDenominator() + second.getNumerator() * this.getDenominator(), this.getDenominator() * second.getDenominator());
+   i.reduce();
    return i;
  }
 
  /** This method subtracts two fractions and returns the difference */
  public Fraction subtract(Fraction second) {
    Fraction i = new Fraction(this.getNumerator() * second.getDenominator() - second.getNumerator() * this.getDenominator(), this.getDenominator() * second.getDenominator());
+   i.reduce();
    return i;
  }
 

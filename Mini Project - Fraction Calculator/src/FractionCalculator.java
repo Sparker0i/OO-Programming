@@ -2,10 +2,15 @@ import java.awt.*;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.TextAction;
-
 import java.awt.event.*;
 
-@SuppressWarnings("serial")
+/*
+ * @Project
+ * Implementing a Fraction Calculator using SWING
+ * Subject : Object Oriented Programming (15CSE201)
+ * @author : Aaditya Menon
+ * Roll Number : AM.EN.U4CSE15001 */
+
 public class FractionCalculator extends JFrame {
 	JTextField numInput, denInput;
 	int a;
@@ -334,6 +339,7 @@ public class FractionCalculator extends JFrame {
 		    				numInput.setText("");
 		    				denInput.setText("");
 		    				numInput.setText(numInput.getText() + m1.getNumerator());					//Retrieves variable stored in memory
+		    				denInput.setText(denInput.getText() + m1.getDenominator());
 		    			}
 		    			if (s.equals("M+")) {
 		    				if (k == 1) {
