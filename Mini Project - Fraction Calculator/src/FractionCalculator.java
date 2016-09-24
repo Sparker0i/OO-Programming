@@ -14,7 +14,7 @@ public class FractionCalculator extends JFrame {
 	int k = 1, x = 0, y = 0, z = 0;
 	char ch;
 	JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, zero, clr, pow2, pow3, exp,
-			fac, plus, min, div, rec, mul, eq, addSub, dot, mr, mc, mp,
+			fac, plus, min, div, rec, mul, eq, addSub, mr, mc, mp,
 			mm, sqrt;								//Buttons
 	Container cont;													//Container
 	JPanel numPanel, denPanel, buttonpanel;							//Panel/Layout
@@ -441,7 +441,7 @@ public class FractionCalculator extends JFrame {
 		};
 		denPanel.add(denInput);										//To add the text field to the desired panel
 		buttonpanel = new JPanel();									//A New Panel For Buttons
-		buttonpanel.setLayout(new GridLayout(8, 4, 2, 2));			//To arrange buttons in a rectangular grid of width 4 and height 8, with a vertical gap of 2 and horizontal gap of 2
+		buttonpanel.setLayout(new GridLayout(7, 4, 2, 2));			//To arrange buttons in a rectangular grid of width 4 and height 8, with a vertical gap of 2 and horizontal gap of 2
 		mr = new JButton("MR");										//Create A new Button with a label "MR"
 		buttonpanel.add(mr);										//Add it to layout
 		mr.addActionListener(action);									//addActionListener(action) automatically invokes actionPerformed(buttonText) {Its there below, don't be too lazy} . eg. action one invokes actionPerformed(mr)
@@ -510,10 +510,6 @@ public class FractionCalculator extends JFrame {
 		addSub = new JButton("+/-");
 		buttonpanel.add(addSub);
 		addSub.addActionListener(action);
-
-		dot = new JButton(".");
-		buttonpanel.add(dot);
-		dot.addActionListener(action);
 
 		eq = new JButton("=");
 		buttonpanel.add(eq);
