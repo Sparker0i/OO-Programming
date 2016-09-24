@@ -56,7 +56,7 @@ public class FractionCalculator extends JFrame {
 		});
 		TextAction action = new TextAction("")
 		{
-		    @Override
+			@Override
 		    public void actionPerformed(ActionEvent e)
 		    {
 		            JTextComponent textField = getFocusedComponent();
