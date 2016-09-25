@@ -18,9 +18,8 @@ public class FractionCalculator extends JFrame {
 	static Fraction m1, m2;
 	int k = 1, x = 0, y = 0, z = 0;
 	char ch;
-	JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, zero, clr, pow2, pow3, exp,
-			fac, plus, min, div, rec, mul, eq, addSub, mr, mc, mp,
-			mm, sqrt;								//Buttons
+	JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, zero, clr, pow2, pow3,
+			plus, min, div, rec, mul, eq, addSub, mr, mc, mp, mm;	//Buttons
 	Container cont;													//Container
 	JPanel numPanel, denPanel, buttonpanel;							//Panel/Layout
 
@@ -30,6 +29,7 @@ public class FractionCalculator extends JFrame {
 		numPanel = new JPanel();									//Layout
 		denPanel = new JPanel();
 		numInput = new JTextField(25);
+		numInput.setUI(new JTextFieldHintUI("Numerator" , Color.GRAY));	//This is completely optional for you guys out there
 		numInput.setHorizontalAlignment(SwingConstants.RIGHT);		//So that the Text when typed appears from right than the left
 		numInput.addKeyListener(new KeyAdapter() {					//To listen to the keyboard events
 			public void keyTyped(KeyEvent keyevent) {				//To recognize which key was pressed
@@ -54,6 +54,7 @@ public class FractionCalculator extends JFrame {
 				}
 			}
 		});
+		denInput.setUI(new JTextFieldHintUI("Denominator" , Color.GRAY));
 		TextAction action = new TextAction("")
 		{
 			@Override
@@ -429,7 +430,7 @@ public class FractionCalculator extends JFrame {
 		mc = new JButton("MC");										//Similar Procedure for all buttons
 		buttonpanel.add(mc);
 		mc.addActionListener(action);
-
+		
 		mp = new JButton("M+");
 		buttonpanel.add(mp);
 		mp.addActionListener(action);
@@ -495,13 +496,11 @@ public class FractionCalculator extends JFrame {
 		eq = new JButton("=");
 		buttonpanel.add(eq);
 		eq.addActionListener(action);
+		eq.requestFocusInWindow();
 
 		rec = new JButton("1/x");
 		buttonpanel.add(rec);
 		rec.addActionListener(action);
-		sqrt = new JButton("Sqrt");
-		buttonpanel.add(sqrt);
-		sqrt.addActionListener(action);
 
 		pow2 = new JButton("x^2");
 		buttonpanel.add(pow2);
@@ -509,12 +508,6 @@ public class FractionCalculator extends JFrame {
 		pow3 = new JButton("x^3");
 		buttonpanel.add(pow3);
 		pow3.addActionListener(action);
-		exp = new JButton("Exp");
-		exp.addActionListener(action);
-		buttonpanel.add(exp);
-		fac = new JButton("n!");
-		fac.addActionListener(action);
-		buttonpanel.add(fac);
 
 		clr = new JButton("AC");
 		buttonpanel.add(clr);
