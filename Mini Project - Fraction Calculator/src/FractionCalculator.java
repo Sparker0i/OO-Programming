@@ -1,12 +1,10 @@
+import com.fraction.Fraction;
+import com.texthint.JTextFieldHintUI;
 
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.TextAction;
-
-import com.fraction.Fraction;
-import com.texthint.JTextFieldHintUI;
-
 import java.awt.event.*;
 
 /*
@@ -40,7 +38,144 @@ public class FractionCalculator extends JFrame {
 			public void keyTyped(KeyEvent keyevent) {				//To recognize which key was pressed
 				char c = keyevent.getKeyChar();						//Getting Key ASCII Value
 				if (c >= '0' && c <= '9') {
-				} 
+				}
+				else if (c == '+')  {
+    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+    					numInput.setText("0");
+    					denInput.setText("1");
+    					temp = new Fraction(0,1);
+    				} 
+    				else if (numInput.getText().equals("")) {
+    					numInput.setText("0");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else if (denInput.getText().equals("")) {
+    					denInput.setText("1");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else {
+    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+    					denInput.setText("1");
+    					ch = '+';											//Sets the operator to +
+    					y = 0;												//Don't know the function of these
+    					x = 0;
+    				}
+    				numInput.requestFocus();
+    			}
+				else if (c == '-')  {
+    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+    					numInput.setText("0");
+    					denInput.setText("1");
+    					temp = new Fraction(0,1);
+    				} 
+    				else if (numInput.getText().equals("")) {
+    					numInput.setText("0");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else if (denInput.getText().equals("")) {
+    					denInput.setText("1");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else {
+    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+    					denInput.setText("1");
+    					ch = '-';											//Sets the operator to +
+    					y = 0;												//Don't know the function of these
+    					x = 0;
+    				}
+    				numInput.requestFocus();
+    			}
+				else if (c == '*')  {
+    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+    					numInput.setText("0");
+    					denInput.setText("1");
+    					temp = new Fraction(0,1);
+    				} 
+    				else if (numInput.getText().equals("")) {
+    					numInput.setText("0");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else if (denInput.getText().equals("")) {
+    					denInput.setText("1");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else {
+    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+    					denInput.setText("1");
+    					ch = '*';											//Sets the operator to +
+    					y = 0;												//Don't know the function of these
+    					x = 0;
+    				}
+    				numInput.requestFocus();
+    			}
+				else if (c == '/')  {
+    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+    					numInput.setText("0");
+    					denInput.setText("1");
+    					temp = new Fraction(0,1);
+    				} 
+    				else if (numInput.getText().equals("")) {
+    					numInput.setText("0");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else if (denInput.getText().equals("")) {
+    					denInput.setText("1");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else {
+    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+    					denInput.setText("1");
+    					ch = '/';											//Sets the operator to +
+    					y = 0;												//Don't know the function of these
+    					x = 0;
+    				}
+    				numInput.requestFocus();
+    			}
+				else if (c == '=' || c == '\n') {										//Does something when = button is pressed
+    				if (numInput.getText().equals("")) {
+    					numInput.setText("");
+    				} else {
+    					if (numInput.getText().equals("") && denInput.getText().equals("")) {
+	    					temp1 = new Fraction(0,1);
+	    				} 
+	    				else if (numInput.getText().equals("")) {
+	    					numInput.setText("0");
+	    					temp1 = new Fraction(0 , 1);
+	    				}
+	    				else if (denInput.getText().equals("")) {
+	    					denInput.setText("1");
+	    					temp1 = new Fraction(0 , 1);
+	    				}
+	    				else {
+	    					temp1 = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+	    				}
+	    				numInput.requestFocus();
+    					switch (ch) {
+    					case '+':
+    						result = temp.add(temp1);
+    						break;
+    					case '-':
+    						result = temp.subtract(temp1);
+    						break;
+    					case '/':
+    						result = temp.divide(temp1);
+    						break;
+    					case '*':
+    						result = temp.multiply(temp1);
+    						break;
+    					}
+    					numInput.setText(Integer.toString(result.getNumerator()));
+    					denInput.setText(Integer.toString(result.getDenominator()));
+    					z = 1;
+    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));
+    					temp1 = new Fraction(0 , 1);
+    				}
+    				numInput.requestFocus();
+    			}
 				else {
 					keyevent.consume();								//To Ignore if any other key was pressed
 				}
@@ -53,7 +188,144 @@ public class FractionCalculator extends JFrame {
 			public void keyTyped(KeyEvent keyevent) {				//To recognize which key was pressed
 				char c = keyevent.getKeyChar();						//Getting Key ASCII Value
 				if (c >= '0' && c <= '9') {
-				} 
+				}
+				else if (c == '+')  {
+    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+    					numInput.setText("0");
+    					denInput.setText("1");
+    					temp = new Fraction(0,1);
+    				} 
+    				else if (numInput.getText().equals("")) {
+    					numInput.setText("0");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else if (denInput.getText().equals("")) {
+    					denInput.setText("1");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else {
+    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+    					denInput.setText("1");
+    					ch = '+';											//Sets the operator to +
+    					y = 0;												//Don't know the function of these
+    					x = 0;
+    				}
+    				denInput.requestFocus();
+    			}
+				else if (c == '-')  {
+    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+    					numInput.setText("0");
+    					denInput.setText("1");
+    					temp = new Fraction(0,1);
+    				} 
+    				else if (numInput.getText().equals("")) {
+    					numInput.setText("0");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else if (denInput.getText().equals("")) {
+    					denInput.setText("1");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else {
+    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+    					denInput.setText("1");
+    					ch = '-';											//Sets the operator to +
+    					y = 0;												//Don't know the function of these
+    					x = 0;
+    				}
+    				denInput.requestFocus();
+    			}
+				else if (c == '*')  {
+    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+    					numInput.setText("0");
+    					denInput.setText("1");
+    					temp = new Fraction(0,1);
+    				} 
+    				else if (numInput.getText().equals("")) {
+    					numInput.setText("0");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else if (denInput.getText().equals("")) {
+    					denInput.setText("1");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else {
+    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+    					denInput.setText("1");
+    					ch = '*';											//Sets the operator to +
+    					y = 0;												//Don't know the function of these
+    					x = 0;
+    				}
+    				denInput.requestFocus();
+    			}
+				else if (c == '/')  {
+    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
+    					numInput.setText("0");
+    					denInput.setText("1");
+    					temp = new Fraction(0,1);
+    				} 
+    				else if (numInput.getText().equals("")) {
+    					numInput.setText("0");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else if (denInput.getText().equals("")) {
+    					denInput.setText("1");
+    					temp = new Fraction(0 , 1);
+    				}
+    				else {
+    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+    					numInput.setText("0");									//Sets input box empty so as to enter the next number
+    					denInput.setText("1");
+    					ch = '/';											//Sets the operator to +
+    					y = 0;												//Don't know the function of these
+    					x = 0;
+    				}
+    				denInput.requestFocus();
+    			}
+				else if (c == '=' || c == '\n') {										//Does something when = button is pressed
+    				if (denInput.getText().equals("")) {
+    					denInput.setText("");
+    				} else {
+    					if (numInput.getText().equals("") && denInput.getText().equals("")) {
+	    					temp1 = new Fraction(0,1);
+	    				} 
+	    				else if (numInput.getText().equals("")) {
+	    					numInput.setText("0");
+	    					temp1 = new Fraction(0 , 1);
+	    				}
+	    				else if (denInput.getText().equals("")) {
+	    					denInput.setText("1");
+	    					temp1 = new Fraction(0 , 1);
+	    				}
+	    				else {
+	    					temp1 = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+	    				}
+	    				numInput.requestFocus();
+    					switch (ch) {
+    					case '+':
+    						result = temp.add(temp1);
+    						break;
+    					case '-':
+    						result = temp.subtract(temp1);
+    						break;
+    					case '/':
+    						result = temp.divide(temp1);
+    						break;
+    					case '*':
+    						result = temp.multiply(temp1);
+    						break;
+    					}
+    					numInput.setText(Integer.toString(result.getNumerator()));
+    					denInput.setText(Integer.toString(result.getDenominator()));
+    					z = 1;
+    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));
+    					temp1 = new Fraction(0 , 1);
+    				}
+    				denInput.requestFocus();
+    			}
 				else {
 					keyevent.consume();								//To Ignore if any other key was pressed
 				}
@@ -227,20 +499,7 @@ public class FractionCalculator extends JFrame {
 		    					a *= -1;
 		    					textField.setText("" + a);
 		    			}
-		    			/*if (s.equals(".")) {
-		    				if (y == 0) {											//I don't get this completely, but I think it means if it hasn't already been done
-		    					textField.setText(textField.getText() + ".");
-		    					y = 1;
-		    				} else {
-		    					textField.setText(textField.getText());
-		    				}
-		    			}*/
 		    			if (s.equals("+")) {
-		    				/*if (textField.getText().equals("")) {						//If null, sets the addend to be 0, and the operator as +
-		    					textField.setText("");
-		    					temp = 0;
-		    					ch = '+';
-		    				}*/
 		    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
 		    					numInput.setText("0");
 		    					denInput.setText("1");
@@ -444,6 +703,9 @@ public class FractionCalculator extends JFrame {
 		b3 = new JButton("3");
 		buttonpanel.add(b3);
 		b3.addActionListener(action);
+		pow2 = new JButton("x^2");
+		buttonpanel.add(pow2);
+		pow2.addActionListener(action);
 
 		b4 = new JButton("4");
 		buttonpanel.add(b4);
@@ -454,6 +716,9 @@ public class FractionCalculator extends JFrame {
 		b6 = new JButton("6");
 		buttonpanel.add(b6);
 		b6.addActionListener(action);
+		pow3 = new JButton("x^3");
+		buttonpanel.add(pow3);
+		pow3.addActionListener(action);
 
 		b7 = new JButton("7");
 		buttonpanel.add(b7);
@@ -464,7 +729,13 @@ public class FractionCalculator extends JFrame {
 		b9 = new JButton("9");
 		buttonpanel.add(b9);
 		b9.addActionListener(action);
+		rec = new JButton("1/x");
+		buttonpanel.add(rec);
+		rec.addActionListener(action);
 
+		addSub = new JButton("+/-");
+		buttonpanel.add(addSub);
+		addSub.addActionListener(action);
 		zero = new JButton("0");
 		buttonpanel.add(zero);
 		zero.addActionListener(action);
@@ -476,6 +747,13 @@ public class FractionCalculator extends JFrame {
 		min = new JButton("-");
 		buttonpanel.add(min);
 		min.addActionListener(action);
+		
+		clr = new JButton("AC");
+		buttonpanel.add(clr);
+		clr.addActionListener(action);
+		eq = new JButton("=");
+		buttonpanel.add(eq);
+		eq.addActionListener(action);
 
 		mul = new JButton("*");
 		buttonpanel.add(mul);
@@ -485,29 +763,6 @@ public class FractionCalculator extends JFrame {
 		div.addActionListener(action);
 		buttonpanel.add(div);
 
-		addSub = new JButton("+/-");
-		buttonpanel.add(addSub);
-		addSub.addActionListener(action);
-
-		eq = new JButton("=");
-		buttonpanel.add(eq);
-		eq.addActionListener(action);
-		eq.requestFocusInWindow();
-
-		rec = new JButton("1/x");
-		buttonpanel.add(rec);
-		rec.addActionListener(action);
-
-		pow2 = new JButton("x^2");
-		buttonpanel.add(pow2);
-		pow2.addActionListener(action);
-		pow3 = new JButton("x^3");
-		buttonpanel.add(pow3);
-		pow3.addActionListener(action);
-
-		clr = new JButton("AC");
-		buttonpanel.add(clr);
-		clr.addActionListener(action);
 		cont.add("South", buttonpanel);								//Adds ButtonPanel to the South Region
 		cont.add("Center" , denPanel);								//Adds Denominator Input Panel to Center Region
 		cont.add("North", numPanel);								//Adds Numerator Panel to the North Region
