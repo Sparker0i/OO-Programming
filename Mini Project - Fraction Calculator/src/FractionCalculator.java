@@ -5,6 +5,7 @@ import javax.swing.text.JTextComponent;
 import javax.swing.text.TextAction;
 
 import com.fraction.Fraction;
+import com.texthint.JTextFieldHintUI;
 
 import java.awt.event.*;
 
