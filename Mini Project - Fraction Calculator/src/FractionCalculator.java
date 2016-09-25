@@ -739,6 +739,27 @@ public class FractionCalculator extends JFrame {
 		zero = new JButton("0");
 		buttonpanel.add(zero);
 		zero.addActionListener(action);
+		
+		b1.setBackground(Color.orange);b1.setContentAreaFilled(false);b1.setOpaque(true);
+		b2.setBackground(Color.orange);
+		b3.setBackground(Color.orange);
+		b4.setBackground(Color.orange);
+		b5.setBackground(Color.orange);
+		b6.setBackground(Color.orange);
+		b7.setBackground(Color.orange);
+		b8.setBackground(Color.orange);
+		b9.setBackground(Color.orange);
+		zero.setBackground(Color.orange);
+		
+		mr.setBackground(Color.red);
+		mc.setBackground(Color.red);
+		mp.setBackground(Color.red);
+		mm.setBackground(Color.red);
+		
+		pow2.setBackground(Color.BLUE);
+		pow3.setBackground(Color.BLUE);
+		rec.setBackground(Color.BLUE);
+		addSub.setBackground(Color.BLUE);
 
 		plus = new JButton("+");
 		buttonpanel.add(plus);
@@ -754,6 +775,9 @@ public class FractionCalculator extends JFrame {
 		eq = new JButton("=");
 		buttonpanel.add(eq);
 		eq.addActionListener(action);
+		
+		clr.setBackground(Color.CYAN);
+		eq.setBackground(Color.CYAN);
 
 		mul = new JButton("*");
 		buttonpanel.add(mul);
@@ -762,6 +786,11 @@ public class FractionCalculator extends JFrame {
 		div = new JButton("/");
 		div.addActionListener(action);
 		buttonpanel.add(div);
+		
+		plus.setBackground(Color.green);
+		min.setBackground(Color.green);
+		div.setBackground(Color.green);
+		mul.setBackground(Color.green);
 
 		cont.add("South", buttonpanel);								//Adds ButtonPanel to the South Region
 		cont.add("Center" , denPanel);								//Adds Denominator Input Panel to Center Region
