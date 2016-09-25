@@ -89,13 +89,6 @@ public class Fraction {
   System.out.print(this.numerator + "/" + this.denominator);
  }
 
- public MixedFraction toMixedFraction() {
- 	MixedFraction f = new MixedFraction(0 , getNumerator() , getDenominator());
- 	f.setWholeNum(getNumerator() / getDenominator());
- 	f.setNumerator(getNumerator() % getDenominator());
- 	return f;
- }
-
  /** This method adds two fractions and returns the sum */
  public Fraction add(Fraction second) {
    Fraction i = new Fraction(this.getNumerator() * second.getDenominator() + second.getNumerator() * this.getDenominator(), this.getDenominator() * second.getDenominator());
