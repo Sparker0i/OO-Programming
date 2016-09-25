@@ -1,3 +1,5 @@
+package com.fraction;
+
 public class Fraction {
  protected int numerator;
  protected int denominator;
@@ -26,25 +28,25 @@ public class Fraction {
   return denominator;
  }
 
- Fraction() {
+ public Fraction() {
   this.numerator = 0;
   this.denominator = 1;
   incrementCount();
  }
 
- Fraction(int n, int d){
+ public Fraction(int n, int d){
   this.numerator = n;
   this.denominator = d;
   incrementCount();
  }
 
- Fraction(int n) {
+ public Fraction(int n) {
   this.numerator = n;
   this.denominator = 1;
   incrementCount();
  }
  
- Fraction (String s) {
+ public Fraction (String s) {
 	 int slashIndex = s.indexOf('/');
 	 this.numerator = Integer.parseInt(s.substring(0, slashIndex));
 	 this.denominator = Integer.parseInt(s.substring(slashIndex + 1));

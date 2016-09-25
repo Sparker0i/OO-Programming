@@ -1,7 +1,11 @@
+
 import java.awt.*;
 import javax.swing.*;
 import javax.swing.text.JTextComponent;
 import javax.swing.text.TextAction;
+
+import com.fraction.Fraction;
+
 import java.awt.event.*;
 
 /*

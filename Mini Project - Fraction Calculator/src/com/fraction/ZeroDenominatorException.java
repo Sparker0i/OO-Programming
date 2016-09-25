@@ -1,3 +1,4 @@
+package com.fraction;
 @SuppressWarnings("serial")
 public class ZeroDenominatorException extends Exception {
 	ZeroDenominatorException (String s) {
