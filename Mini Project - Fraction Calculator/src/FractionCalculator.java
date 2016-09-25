@@ -21,7 +21,7 @@ public class FractionCalculator extends JFrame {
 	static Fraction m1, m2;
 	int k = 1, x = 0, y = 0, z = 0;
 	char ch;
-	JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, zero, clr, pow2, pow3,
+	JButton b1, b2, b3, b4, b5, b6, b7, b8, b9, b0, clr, pow2, pow3,
 			plus, min, div, rec, mul, eq, addSub, mr, mc, mp, mm;	//Buttons
 	Container cont;													//Container
 	JPanel numPanel, denPanel, buttonpanel;							//Panel/Layout
@@ -736,30 +736,30 @@ public class FractionCalculator extends JFrame {
 		addSub = new JButton("+/-");
 		buttonpanel.add(addSub);
 		addSub.addActionListener(action);
-		zero = new JButton("0");
-		buttonpanel.add(zero);
-		zero.addActionListener(action);
+		b0 = new JButton("0");
+		buttonpanel.add(b0);
+		b0.addActionListener(action);
 		
 		b1.setBackground(Color.orange);b1.setContentAreaFilled(false);b1.setOpaque(true);
-		b2.setBackground(Color.orange);
-		b3.setBackground(Color.orange);
-		b4.setBackground(Color.orange);
-		b5.setBackground(Color.orange);
-		b6.setBackground(Color.orange);
-		b7.setBackground(Color.orange);
-		b8.setBackground(Color.orange);
-		b9.setBackground(Color.orange);
-		zero.setBackground(Color.orange);
+		b2.setBackground(Color.orange);b2.setContentAreaFilled(false);b2.setOpaque(true);
+		b3.setBackground(Color.orange);b3.setContentAreaFilled(false);b3.setOpaque(true);
+		b4.setBackground(Color.orange);b4.setContentAreaFilled(false);b4.setOpaque(true);
+		b5.setBackground(Color.orange);b5.setContentAreaFilled(false);b5.setOpaque(true);
+		b6.setBackground(Color.orange);b6.setContentAreaFilled(false);b6.setOpaque(true);
+		b7.setBackground(Color.orange);b7.setContentAreaFilled(false);b7.setOpaque(true);
+		b8.setBackground(Color.orange);b8.setContentAreaFilled(false);b8.setOpaque(true);
+		b9.setBackground(Color.orange);b9.setContentAreaFilled(false);b9.setOpaque(true);
+		b0.setBackground(Color.orange);b0.setContentAreaFilled(false);b0.setOpaque(true);
 		
-		mr.setBackground(Color.red);
-		mc.setBackground(Color.red);
-		mp.setBackground(Color.red);
-		mm.setBackground(Color.red);
+		mr.setBackground(Color.red);mr.setContentAreaFilled(false);mr.setOpaque(true);
+		mc.setBackground(Color.red);mc.setContentAreaFilled(false);mc.setOpaque(true);
+		mp.setBackground(Color.red);mp.setContentAreaFilled(false);mp.setOpaque(true);
+		mm.setBackground(Color.red);mm.setContentAreaFilled(false);mm.setOpaque(true);
 		
-		pow2.setBackground(Color.BLUE);
-		pow3.setBackground(Color.BLUE);
-		rec.setBackground(Color.BLUE);
-		addSub.setBackground(Color.BLUE);
+		pow2.setBackground(Color.BLUE);pow2.setContentAreaFilled(false);pow2.setOpaque(true);
+		pow3.setBackground(Color.BLUE);pow3.setContentAreaFilled(false);pow3.setOpaque(true);
+		rec.setBackground(Color.BLUE);rec.setContentAreaFilled(false);rec.setOpaque(true);
+		addSub.setBackground(Color.BLUE);addSub.setContentAreaFilled(false);addSub.setOpaque(true);
 
 		plus = new JButton("+");
 		buttonpanel.add(plus);
@@ -776,8 +776,8 @@ public class FractionCalculator extends JFrame {
 		buttonpanel.add(eq);
 		eq.addActionListener(action);
 		
-		clr.setBackground(Color.CYAN);
-		eq.setBackground(Color.CYAN);
+		clr.setBackground(Color.CYAN);clr.setContentAreaFilled(false);clr.setOpaque(true);
+		eq.setBackground(Color.CYAN);eq.setContentAreaFilled(false);eq.setOpaque(true);
 
 		mul = new JButton("*");
 		buttonpanel.add(mul);
@@ -787,10 +787,10 @@ public class FractionCalculator extends JFrame {
 		div.addActionListener(action);
 		buttonpanel.add(div);
 		
-		plus.setBackground(Color.green);
-		min.setBackground(Color.green);
-		div.setBackground(Color.green);
-		mul.setBackground(Color.green);
+		plus.setBackground(Color.green);plus.setContentAreaFilled(false);plus.setOpaque(true);
+		min.setBackground(Color.green);min.setContentAreaFilled(false);min.setOpaque(true);
+		div.setBackground(Color.green);div.setContentAreaFilled(false);div.setOpaque(true);
+		mul.setBackground(Color.green);mul.setContentAreaFilled(false);mul.setOpaque(true);
 
 		cont.add("South", buttonpanel);								//Adds ButtonPanel to the South Region
 		cont.add("Center" , denPanel);								//Adds Denominator Input Panel to Center Region
