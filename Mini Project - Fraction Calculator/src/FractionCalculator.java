@@ -409,21 +409,12 @@ public class FractionCalculator extends JFrame {
 		    					temp1 = new Fraction(0 , 1);
 		    				}
 		    			}
-		    			/*if (s.equals("n!")) {										//Calculates n! and puts the value in the input box
-		    				if (textField.getText().equals("")) {
-		    					textField.setText("");
-		    				} else {
-		    					a = fact(Integer.parseInt(textField.getText()));
-		    					textField.setText("");
-		    					textField.setText(textField.getText() + a);
-		    				}
-		    			}*/
 		    			textField.requestFocus();
 		    			}
 		};
 		denPanel.add(denInput);										//To add the text field to the desired panel
 		buttonpanel = new JPanel();									//A New Panel For Buttons
-		buttonpanel.setLayout(new GridLayout(7, 4, 2, 2));			//To arrange buttons in a rectangular grid of width 4 and height 8, with a vertical gap of 2 and horizontal gap of 2
+		buttonpanel.setLayout(new GridLayout(6, 4, 2, 2));			//To arrange buttons in a rectangular grid of width 4 and height 8, with a vertical gap of 2 and horizontal gap of 2
 		mr = new JButton("MR");										//Create A new Button with a label "MR"
 		buttonpanel.add(mr);										//Add it to layout
 		mr.addActionListener(action);									//addActionListener(action) automatically invokes actionPerformed(buttonText) {Its there below, don't be too lazy} . eg. action one invokes actionPerformed(mr)
@@ -516,16 +507,6 @@ public class FractionCalculator extends JFrame {
 		cont.add("Center" , denPanel);								//Adds Denominator Input Panel to Center Region
 		cont.add("North", numPanel);								//Adds Numerator Panel to the North Region
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);				//What To Do When Close Has Been Clicked
-	}
-
-	double fact(double x) {
-		if (x < 0) {
-			return 0;	
-		}
-		double i, s = 1;
-		for (i = 2; i <= x; i += 1.0)
-			s *= i;
-		return s;
 	}
 
 	public static void main(String args[]) {
