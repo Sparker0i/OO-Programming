@@ -500,7 +500,8 @@ public class FractionCalculator extends JFrame {
 		    						JOptionPane.showMessageDialog(null, zde.getMessage());
 		    						m1 = m1.add(new Fraction(Integer.parseInt(numInput.getText())));
 		    					}
-		    					textField.setText("" + m1);							//Displays the new result in input field
+		    					numInput.setText("" + m1.getNumerator());							//Displays the new result in input field
+		    					denInput.setText("" + m1.getDenominator());
 		    				}
 		    			}
 		    			if (s.equals("M-")) {
@@ -521,7 +522,8 @@ public class FractionCalculator extends JFrame {
 		    						JOptionPane.showMessageDialog(null, zde.getMessage());
 		    						m1 = m1.subtract(new Fraction(Integer.parseInt(numInput.getText())));
 		    					}
-		    					textField.setText("" + m1);
+		    					numInput.setText("" + m1.getNumerator());							//Displays the new result in input field
+		    					denInput.setText("" + m1.getDenominator());
 		    				}
 		    			}
 		    			if (s.equals("Sqrt")) {
