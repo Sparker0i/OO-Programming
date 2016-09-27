@@ -1,4 +1,5 @@
 import com.fraction.Fraction;
+import com.fraction.ZeroDenominatorException;
 import com.texthint.JTextFieldHintUI;
 
 import java.awt.*;
@@ -44,18 +45,24 @@ public class FractionCalculator extends JFrame {
     					numInput.setText("");
     				} else {
     					if (numInput.getText().equals("") && denInput.getText().equals("")) {
-	    					temp1 = new Fraction(0,1);
+	    					temp1 = new Fraction(0);
 	    				} 
 	    				else if (numInput.getText().equals("")) {
 	    					numInput.setText("0");
-	    					temp1 = new Fraction(0 , 1);
+	    					temp1 = new Fraction(0);
 	    				}
 	    				else if (denInput.getText().equals("")) {
 	    					denInput.setText("1");
-	    					temp1 = new Fraction(0 , 1);
+	    					temp1 = new Fraction(0);
 	    				}
 	    				else {
+	    					try {
 	    					temp1 = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));		//Parses the number input
+	    				}
+	    					catch (ZeroDenominatorException zde) {
+	    						JOptionPane.showMessageDialog(null,zde.getMessage());
+	    						temp1 = new Fraction(Integer.parseInt(numInput.getText()));
+	    					}
 	    				}
 	    				numInput.requestFocus();
     					switch (ch) {
@@ -75,8 +82,13 @@ public class FractionCalculator extends JFrame {
     					numInput.setText(Integer.toString(result.getNumerator()));
     					denInput.setText(Integer.toString(result.getDenominator()));
     					z = 1;
-    					temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));
-    					temp1 = new Fraction(0 , 1);
+    					try {
+    						temp = new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText()));	    				
+    						}
+	    					catch (ZeroDenominatorException zde) {
+	    						JOptionPane.showMessageDialog(null,zde.getMessage());
+	    					}
+    					temp1 = new Fraction(0);
     				}
     				keyevent.consume();
     				numInput.requestFocus();

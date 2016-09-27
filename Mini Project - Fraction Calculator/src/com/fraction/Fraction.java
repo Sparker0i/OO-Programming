@@ -34,10 +34,15 @@ public class Fraction {
   incrementCount();
  }
 
- public Fraction(int n, int d){
+ public Fraction(int n, int d) throws ZeroDenominatorException{
+  if (d != 0) {
   this.numerator = n;
   this.denominator = d;
   incrementCount();
+  }
+  else {
+	  throw new ZeroDenominatorException("Denominator Cant be Zero, initializing denominator to 1");
+  }
  }
 
  public Fraction(int n) {
@@ -62,7 +67,13 @@ public class Fraction {
  }
  
  public Fraction inverse() {
-  Fraction f = new Fraction(denominator, numerator);
+	 Fraction f = new Fraction();
+	 try {
+  f = new Fraction(denominator, numerator);
+	 }
+	 catch (ZeroDenominatorException zde) {
+		 zde.getMessage();
+	 }
   return f;
  }
 
@@ -76,7 +87,13 @@ public class Fraction {
    } else
     ++i;
   }
-  Fraction f = new Fraction(numerator, denominator);
+  Fraction f = new Fraction();
+  try {
+	  f = new Fraction(numerator , denominator);
+		 }
+		 catch (ZeroDenominatorException zde) {
+			 zde.getMessage();
+		 }
   return f;
  }
 
@@ -93,14 +110,26 @@ public class Fraction {
 
  /** This method adds two fractions and returns the sum */
  public Fraction add(Fraction second) {
-   Fraction i = new Fraction(this.getNumerator() * second.getDenominator() + second.getNumerator() * this.getDenominator(), this.getDenominator() * second.getDenominator());
+	 Fraction i = new Fraction();
+	 try {
+		 i = new Fraction(this.getNumerator() * second.getDenominator() + second.getNumerator() * this.getDenominator(), this.getDenominator() * second.getDenominator());
+			 }
+			 catch (ZeroDenominatorException zde) {
+				 zde.getMessage();
+			 }
    i.reduce();
    return i;
  }
 
  /** This method subtracts two fractions and returns the difference */
  public Fraction subtract(Fraction second) {
-   Fraction i = new Fraction(this.getNumerator() * second.getDenominator() - second.getNumerator() * this.getDenominator(), this.getDenominator() * second.getDenominator());
+	 Fraction i = new Fraction();
+	 try {
+		 i = new Fraction(this.getNumerator() * second.getDenominator() - second.getNumerator() * this.getDenominator(), this.getDenominator() * second.getDenominator());
+			 }
+			 catch (ZeroDenominatorException zde) {
+				 zde.getMessage();
+			 }
    i.reduce();
    return i;
  }
@@ -109,7 +138,13 @@ public class Fraction {
   int n, d;
   n = this.numerator * frac.getNumerator();
   d = this.denominator * frac.getDenominator();
-  Fraction i = new Fraction(n, d);
+  Fraction i = new Fraction();
+	 try {
+		 i = new Fraction(n , d);
+			 }
+			 catch (ZeroDenominatorException zde) {
+				 zde.getMessage();
+			 }
   i.reduce();
   return i;
  }
@@ -119,7 +154,13 @@ public class Fraction {
 	  frac = frac.inverse();
 	  n = this.getNumerator() * frac.getNumerator();
 	  d = this.getDenominator() * frac.getDenominator();
-	  Fraction i = new Fraction(n, d);
+	  Fraction i = new Fraction();
+		 try {
+			 i = new Fraction(n , d);
+				 }
+				 catch (ZeroDenominatorException zde) {
+					 zde.getMessage();
+				 }
 	  i.reduce();
 	  return i;
 	 }
