@@ -289,15 +289,6 @@ public class FractionCalculator extends JFrame {
 		    					denInput.setText(s1);
 		    				}
 		    			}
-		    			/*if (s.equals("Exp")) {
-		    				if (textField.getText().equals("")) {
-		    					textField.setText("");
-		    				} else {
-		    					a = (int) Math.exp(Integer.parseInt(textField.getText()));	//Calculates e ^ a
-		    					textField.setText("");
-		    					textField.setText(textField.getText() + a);				//Sets it back to the text field.
-		    				}
-		    			}*/
 		    			if (s.equals("x^2")) {
 		    				if (numInput.getText().equals("") && denInput.getText().equals("")) {
 		    					numInput.setText("0");
@@ -492,7 +483,8 @@ public class FractionCalculator extends JFrame {
 		    						m1 = new Fraction(Integer.parseInt(numInput.getText()));
 		    					}
 		    					k++;
-		    				} else {
+		    				} 
+		    				else {
 		    					try {
 		    						m1 = m1.add(new Fraction(Integer.parseInt(numInput.getText()) , Integer.parseInt(denInput.getText())));			//Variable in memory exists, thus adds this value to the one in memory
 		    					}
@@ -721,8 +713,8 @@ public class FractionCalculator extends JFrame {
 	public static void main(String args[]) {
 		try {														//If the OS is Windows, the buttons and the text box will look like those you see in the Windows Operating System, else displays in the default Swing style
 			UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-		} catch (Exception e) {
-		}
+		} 
+		catch (Exception e) {}
 		FractionCalculator f = new FractionCalculator();
 		f.setResizable(false);
 		f.setTitle("Scientific Calculator");
