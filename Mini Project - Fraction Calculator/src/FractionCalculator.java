@@ -28,6 +28,7 @@ public class FractionCalculator extends JFrame {
 	Container cont;													//Container
 	JPanel numPanel, denPanel, buttonpanel;							//Panel/Layout
 
+	/** Constructor that does all the work*/
 	FractionCalculator() {
 		cont = getContentPane();									//Layer To Hold Objects
 		cont.setLayout(new BorderLayout());							//BL arranges components in Regions E , W , N , S, Center. Each region has only one component
