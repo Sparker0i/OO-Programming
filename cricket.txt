@@ -22,7 +22,7 @@
 		- String coach
 		- Player captain
 		
-		+ void setTeamName(team)
+		~ Team (team)
 		+ String getTeamName()
 		+ void setPlayers()
 		+ Player[] getPlayers()
@@ -54,11 +54,16 @@
 		+ int getTotalMatches(int id)
 	}
 	
-	~interface Batsman {
+	~class Batsman {
 		- int runsScored
 		- boolean rightHanded
 		- float avg
 		- float strikeRate
+		
+		+ int getRunsScored()
+		+ void setRightHanded(value)
+		+ float getAvg()
+		+ float getSRate()
 	}
 	
 	+class Bowler {
@@ -66,6 +71,11 @@
 		- int wickets
 		- float overs
 		- float avg
+		
+		+ int getBowlingType()
+		+ int getWickets()
+		+ float getOvers()
+		+ float getAvg()
 	}
 	
 	#enum BowlingType {
@@ -93,7 +103,15 @@
 		- float currentRunRate
 		- float reqdRunRate
 		
-		+ 
+		+ void initInn1()
+		+ void initInn2()
+		+ void setBow(name)
+		~ Scorecard()
+		+ int getTeam1Runs()
+		+ int getTeam2Runs()
+		+ int getTeam1Wickets()
+		+ int getTeam2Wickets()
+		
 	}
 	
 	+class Ball {
@@ -118,7 +136,6 @@
 		- int extraCount
 		
 		+ void setBall(ball , extra)
-		+  
 	}
 	
 	#enum Extra {
