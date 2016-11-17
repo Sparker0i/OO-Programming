@@ -1,0 +1,75 @@
+@startuml
+hide footbox
+
+System -> Driver : main
+activate Driver
+
+	Driver -> Scanner : setGround(ground)
+	activate Scanner
+	Scanner --> Driver
+	Driver -> Scanner : setDate(matchDate)
+	Scanner --> Driver
+	deactivate Scanner
+	
+	Driver -> Match : Match(Place , Date)
+	activate Match
+	Match --> Driver
+	deactivate Match
+	
+	Driver -> Scanner : setTeamName()
+	activate Scanner
+	Scanner --> Driver
+	deactivate Scanner
+	
+	loop 2 times
+		Driver -> Team : Team (tName)
+		activate Team
+		Team --> Driver
+		deactivate Team
+		
+		loop 11 times
+			Driver -> Scanner : setPlayer(Name , Age)
+			activate Scanner
+			Scanner --> Driver
+			deactivate Scanner
+			
+			Driver -> Player : Player()
+			activate Player
+			Player --> Driver
+			deactivate Player
+		end
+	end
+	
+	Driver -> Scorecard : Scorecard()
+	activate Scorecard
+	Scorecard --> Driver
+	deactivate Scorecard
+	
+	loop 2 times
+		loop 50 times
+			loop 6 times
+				Driver -> Scanner : setRunsScored()
+				activate Scanner
+				Scanner --> Driver
+				deactivate Scanner
+				
+				Driver -> Player : updateRuns()
+				activate Player
+				deactivate Player
+				
+				Driver -> Player : setRuns(runs)
+				activate Player
+				Player -> Team : setRuns(runs)
+				Player -> Scorecard : setRuns(runs)
+				Player --> Driver
+				deactivate Player
+				
+				Driver -> Scorecard : setBall(runs , extra)
+				activate Scorecard
+				Scorecard --> Driver
+				deactivate Scorecard
+			end
+		end
+	end
+
+@enduml

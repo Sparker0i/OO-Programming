@@ -1,0 +1,146 @@
+@startuml
+	hide footbox
+	+class Match {
+		- String ground
+		- Date matchDate
+		- Team team1
+		- Team team2
+		- Scorecard sc
+		
+		~Match(ground , matchDate)
+		+ String getGround()
+		+ Date getDate()
+		+ void setTeam1(team1)
+		+ void setTeam2(team2)
+		+ Team getTeam1()
+		+ Team getTeam2()
+	}
+	
+	+class Team {
+		- String teamName
+		- Player player[10]
+		- String coach
+		- Player captain
+		
+		+ void setTeamName(team)
+		+ String getTeamName()
+		+ void setPlayers()
+		+ Player[] getPlayers()
+		+ void setCoach(name)
+		+ String getCoach()
+	}
+	
+	+class Player {
+		- String playerName
+		- int age
+		- Profile profile
+		- int id
+		- boolean captain
+		
+		+ void setPlayerName()
+		+ String getPlayerName()
+		+ void setAge()
+		+ int getAge()
+		+ void setCaptain(value)
+	}
+	
+	+class Profile {
+		- int lifetimeRuns
+		- int lifetimeWickets
+		- int totalMatches
+		
+		+ int getLifetimeRuns(int id)
+		+ int getLifetimeWickets(int id)
+		+ int getTotalMatches(int id)
+	}
+	
+	~interface Batsman {
+		- int runsScored
+		- boolean rightHanded
+		- float avg
+		- float strikeRate
+	}
+	
+	+class Bowler {
+		- BowlingType type
+		- int wickets
+		- float overs
+		- float avg
+	}
+	
+	#enum BowlingType {
+		+ Fast
+		+ Spin
+		+ MedFast
+	}
+	
+	#class Innings {
+		- int totalRuns
+		- Team team
+		
+		+ void setTeam()
+		+ int getTotalRuns()
+	}
+	
+	+class Scorecard {
+		- Innings inn1
+		- Innings inn2
+		- Bowler bow
+		- int runsTeam1
+		- int wicketsTeam1
+		- int runsTeam2
+		- int wicketsTeam2
+		- float currentRunRate
+		- float reqdRunRate
+		
+		+ 
+	}
+	
+	+class Ball {
+		- Batsman b
+		- int runsScored
+		- boolean wicket
+		- Extra extra
+		
+		+ int getBatsman()
+		+ int getRunsScored()
+		+ int getWickets()
+		+ void setBall(runs, extra)
+		+ void setWicket(boolean)
+	}
+	
+	+class Over {
+		- Ball ball[6]
+		- Bowler bowler
+		- Player Player1
+		- Player Player2
+		- int ballCount
+		- int extraCount
+		
+		+ void setBall(ball , extra)
+		+  
+	}
+	
+	#enum Extra {
+		+ regular
+		+ noBall
+		+ wideBall
+		+ bye
+		+ legBye
+	}
+	
+	Match "1" *-- "2" Team
+	Match "1" *-- "1" Scorecard
+	Over "1" *-- "1" Bowler
+	Team "1" *-- "11" Player
+	Player <|-- Batsman
+	Player <|-- Bowler
+	Bowler <-- BowlingType
+	Over "1" *-- "6" Ball
+	Ball "1" *-- "*" Extra
+	Match "1" *-- "2" Innings
+	Scorecard "1" *-- "2" Innings
+	Innings "1" *-- "50" Over
+	Player <-- Profile
+	
+@enduml
