@@ -16,11 +16,6 @@ activate Driver
 	Match --> Driver
 	deactivate Match
 	
-	Driver -> Scanner : setTeamName()
-	activate Scanner
-	Scanner --> Driver
-	deactivate Scanner
-	
 	loop 2 times
 		Driver -> Team : Team (tName)
 		activate Team
@@ -28,15 +23,15 @@ activate Driver
 		deactivate Team
 		
 		loop 11 times
-			Driver -> Scanner : setPlayer(Name , Age)
-			activate Scanner
-			Scanner --> Driver
-			deactivate Scanner
-			
 			Driver -> Player : Player()
 			activate Player
 			Player --> Driver
 			deactivate Player
+			
+			Driver -> Scanner : setPlayer(Name , Age)
+			activate Scanner
+			Scanner --> Driver
+			deactivate Scanner
 		end
 	end
 	
@@ -46,14 +41,30 @@ activate Driver
 	deactivate Scorecard
 	
 	loop 2 times
+		Driver -> Scanner : setTeam(team)
+		activate Scanner
+		Scanner --> Driver
+		deactivate Scanner
+		
 		loop 50 times
+			Driver -> Scanner : setBowler(playerId)
+			activate Scanner
+			Scanner --> Driver
+			deactivate Scanner
+			
 			loop 6 times
-				Driver -> Scanner : setRunsScored()
+				Driver -> Scanner : setRunsScored(runs, isWicket, extra)
 				activate Scanner
 				Scanner --> Driver
+				Driver --> Team
 				deactivate Scanner
 				
-				Driver -> Player : updateRuns()
+				Driver -> Batsman : setRunsScored(runs, isWicket, extra)
+				activate Batsman
+				Batsman --> Driver
+				deactivate Batsman
+				
+				Driver -> Player : updateRuns(runs)
 				activate Player
 				deactivate Player
 				
@@ -64,7 +75,15 @@ activate Driver
 				Player --> Driver
 				deactivate Player
 				
-				Driver -> Scorecard : setBall(runs , extra)
+				Driver -> Scorecard : setBall(bowlerId, batsmanId, runs , extra)
+				activate Scorecard
+				Scorecard -> Bowler : setRunsGiven(bowlerId, runs, extra)
+				Scorecard -> Batsman : setRunsScored(batsmanId, runs)
+				Scorecard --> Driver
+				deactivate Scorecard
+				
+				
+				Driver -> Scorecard : setWicket(bowlerId, batsmanId, isWicket)
 				activate Scorecard
 				Scorecard --> Driver
 				deactivate Scorecard

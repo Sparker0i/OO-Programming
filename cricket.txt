@@ -1,6 +1,7 @@
 @startuml
+
 	hide footbox
-	+class Match {
+	class Match {
 		- String ground
 		- Date matchDate
 		- Team team1
@@ -16,7 +17,7 @@
 		+ Team getTeam2()
 	}
 	
-	+class Team {
+	class Team {
 		- String teamName
 		- Player player[10]
 		- String coach
@@ -30,7 +31,7 @@
 		+ String getCoach()
 	}
 	
-	+class Player {
+	class Player {
 		- String playerName
 		- int age
 		- Profile profile
@@ -44,7 +45,7 @@
 		+ void setCaptain(value)
 	}
 	
-	+class Profile {
+	class Profile {
 		- int lifetimeRuns
 		- int lifetimeWickets
 		- int totalMatches
@@ -54,7 +55,7 @@
 		+ int getTotalMatches(int id)
 	}
 	
-	~class Batsman {
+	class Batsman {
 		- int runsScored
 		- boolean rightHanded
 		- float avg
@@ -66,7 +67,7 @@
 		+ float getSRate()
 	}
 	
-	+class Bowler {
+	class Bowler {
 		- BowlingType type
 		- int wickets
 		- float overs
@@ -78,13 +79,13 @@
 		+ float getAvg()
 	}
 	
-	#enum BowlingType {
+	enum BowlingType {
 		+ Fast
 		+ Spin
 		+ MedFast
 	}
 	
-	#class Innings {
+	class Innings {
 		- int totalRuns
 		- Team team
 		
@@ -92,7 +93,7 @@
 		+ int getTotalRuns()
 	}
 	
-	+class Scorecard {
+	class Scorecard {
 		- Innings inn1
 		- Innings inn2
 		- Bowler bow
@@ -114,7 +115,7 @@
 		
 	}
 	
-	+class Ball {
+	class Ball {
 		- Batsman b
 		- int runsScored
 		- boolean wicket
@@ -127,7 +128,7 @@
 		+ void setWicket(boolean)
 	}
 	
-	+class Over {
+	class Over {
 		- Ball ball[6]
 		- Bowler bowler
 		- Player Player1
@@ -138,7 +139,7 @@
 		+ void setBall(ball , extra)
 	}
 	
-	#enum Extra {
+	enum Extra {
 		+ regular
 		+ noBall
 		+ wideBall
