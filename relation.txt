@@ -43,50 +43,42 @@ activate Driver
 	loop 2 times
 		Driver -> Scanner : setTeam(team)
 		activate Scanner
+		Driver --> Scorecard
 		Scanner --> Driver
 		deactivate Scanner
 		
 		loop 50 times
+		
+			Driver -> Scorecard : swapBatsmen()
+			
 			Driver -> Scanner : setBowler(playerId)
 			activate Scanner
 			Scanner --> Driver
 			deactivate Scanner
 			
 			loop 6 times
-				Driver -> Scanner : setRunsScored(runs, isWicket, extra)
-				activate Scanner
-				Scanner --> Driver
-				Driver --> Team
-				deactivate Scanner
-				
-				Driver -> Batsman : setRunsScored(runs, isWicket, extra)
-				activate Batsman
-				Batsman --> Driver
-				deactivate Batsman
-				
-				Driver -> Player : updateRuns(runs)
-				activate Player
-				deactivate Player
-				
-				Driver -> Player : setRuns(runs)
-				activate Player
-				Player -> Team : setRuns(runs)
-				Player -> Scorecard : setRuns(runs)
-				Player --> Driver
-				deactivate Player
-				
-				Driver -> Scorecard : setBall(bowlerId, batsmanId, runs , extra)
+				Driver -> Scorecard : setBall(bowlerId, batsmanId, runs, isWicket, extra)
 				activate Scorecard
 				Scorecard -> Bowler : setRunsGiven(bowlerId, runs, extra)
 				Scorecard -> Batsman : setRunsScored(batsmanId, runs)
 				Scorecard --> Driver
 				deactivate Scorecard
 				
+				alt if wicket fallen
+					Driver -> Scanner : setWicket(bowlerId, batsmanId, isWicket, newBatsmanId)
+					activate Scanner
+					Scanner --> Driver
+					Driver --> Scorecard
+					deactivate Scanner
+				end
 				
-				Driver -> Scorecard : setWicket(bowlerId, batsmanId, isWicket)
-				activate Scorecard
-				Scorecard --> Driver
-				deactivate Scorecard
+				Driver -> Scanner : setRunsScored(runs, isWicket, extra)
+				activate Scanner
+				Scanner --> Driver
+				Driver --> Player : setRunsScored(batsmanId, runs, isWicket, extra)
+				Driver --> Team : updateTeamScore()
+				Driver --> Scorecard : updateScoreCard()
+				deactivate Scanner
 			end
 		end
 	end
